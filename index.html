@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Painel IPTV de Nova Geração · Rápido, Minimalista e White Label</title>
-  <meta name="description" content="O painel de gestão IPTV mais moderno e veloz do mercado. Arquitetura Multi-Tema (Sigma Pro e Xtream Clássico), 100% White Label com marca e domínio próprios.">
+  <title>Sigma Enterprise · Plataforma Corporativa de Gestão IPTV & Streaming</title>
+  <meta name="description" content="Solução B2B completa para gestão, monitoramento e distribuição de operações de streaming e IPTV. Infraestrutura resiliente, arquitetura multi-tema e White Label absoluto.">
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 
   <!-- Google Fonts: Plus Jakarta Sans & Inter -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -21,19 +21,22 @@
         extend: {
           fontFamily: {
             sans: ['"Plus Jakarta Sans"', 'Inter', 'sans-serif'],
-            body: ['Inter', 'sans-serif']
+            body: ['Inter', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace']
           },
           colors: {
-            brand: {
-              50: '#eef9ff',
-              100: '#d8f2ff',
-              400: '#38bdf8',
-              500: '#009EF7',
-              600: '#0284c7',
-              hover: '#0086D1',
-              dark: '#07090E',
-              card: '#0D111A',
-              cardBorder: '#1A2130'
+            slate: {
+              850: '#111622',
+              900: '#0c1017',
+              950: '#07090e'
+            },
+            corp: {
+              blue: '#009EF7',
+              darkBlue: '#007ab8',
+              cyan: '#06b6d4',
+              emerald: '#10b981',
+              border: '#1a2233',
+              card: '#0c1018'
             }
           }
         }
@@ -45,64 +48,59 @@
   <script src="https://unpkg.com/lucide@latest"></script>
 
   <style>
-    /* Estilo Ultra Minimalista e Futurista */
+    /* Reset & Base Corporativo */
     body {
-      background-color: #07090e;
-      color: #e2e8f0;
+      background-color: #06080d;
+      color: #cbd5e1;
       font-feature-settings: "cv02", "cv03", "cv04", "cv11";
       overflow-x: hidden;
+      letter-spacing: -0.011em;
     }
 
-    /* Ambient Mesh Glow */
-    .ambient-glow {
-      background: radial-gradient(circle at 50% 0%, rgba(0, 158, 247, 0.15) 0%, rgba(114, 57, 234, 0.08) 35%, rgba(7, 9, 14, 0) 70%);
+    /* Enterprise Blueprint Grid */
+    .bg-grid-pattern {
+      background-size: 40px 40px;
+      background-image: 
+        linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
     }
 
-    .ambient-glow-bottom {
-      background: radial-gradient(circle at 50% 100%, rgba(0, 158, 247, 0.12) 0%, rgba(16, 185, 129, 0.06) 40%, rgba(7, 9, 14, 0) 70%);
+    .bg-dot-pattern {
+      background-size: 24px 24px;
+      background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px);
     }
 
-    /* Glassmorphism Card */
-    .glass-card {
-      background: rgba(13, 17, 26, 0.75);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
+    /* Ambient Corporate Lights */
+    .corporate-glow-top {
+      background: radial-gradient(circle at 50% -20%, rgba(0, 158, 247, 0.18) 0%, rgba(14, 165, 233, 0.05) 45%, rgba(6, 8, 13, 0) 75%);
+    }
+
+    /* Enterprise Glass & Border */
+    .b2b-card {
+      background: #0b0f17;
       border: 1px solid rgba(255, 255, 255, 0.07);
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
-    .glass-card:hover {
-      border-color: rgba(0, 158, 247, 0.28);
+    .b2b-card:hover {
+      border-color: rgba(0, 158, 247, 0.35);
+      background: #0e131d;
     }
 
-    /* Custom Scrollbar */
-    ::-webkit-scrollbar {
-      width: 8px;
-    }
-    ::-webkit-scrollbar-track {
-      background: #07090e;
-    }
-    ::-webkit-scrollbar-thumb {
-      background: #1e2638;
-      border-radius: 4px;
-    }
-    ::-webkit-scrollbar-thumb:hover {
-      background: #009EF7;
-    }
-
-    /* Range Slider Styling */
+    /* Range Slider */
     input[type=range] {
       -webkit-appearance: none;
-      background: #1a2233;
-      height: 8px;
-      border-radius: 4px;
+      background: #1e2638;
+      height: 6px;
+      border-radius: 3px;
     }
     input[type=range]::-webkit-slider-thumb {
       -webkit-appearance: none;
-      height: 22px;
-      width: 22px;
+      height: 20px;
+      width: 20px;
       border-radius: 50%;
       background: #009EF7;
-      box-shadow: 0 0 12px rgba(0, 158, 247, 0.6);
+      box-shadow: 0 0 10px rgba(0, 158, 247, 0.6);
       cursor: pointer;
       border: 2px solid #ffffff;
       transition: transform 0.15s ease;
@@ -110,533 +108,791 @@
     input[type=range]::-webkit-slider-thumb:hover {
       transform: scale(1.15);
     }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 7px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #06080d;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #1a2233;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #009EF7;
+    }
   </style>
 </head>
-<body class="min-h-screen selection:bg-[#009EF7]/30 selection:text-white">
+<body class="min-h-screen selection:bg-[#009EF7]/30 selection:text-white relative">
 
-  <!-- Glow Superior -->
-  <div class="fixed inset-0 pointer-events-none z-0 ambient-glow"></div>
+  <!-- Ambient Light Superior -->
+  <div class="fixed inset-0 pointer-events-none z-0 corporate-glow-top"></div>
+  <div class="fixed inset-0 pointer-events-none z-0 bg-grid-pattern opacity-60"></div>
 
   <!-- ==========================================
-       NAVBAR MINIMALISTA
+       TOP STATUS BAR CORPORATIVA
        ========================================== -->
-  <header class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 backdrop-blur-md bg-[#07090e]/80 border-b border-white/[0.06]">
+  <div class="relative z-50 bg-[#080b11] border-b border-white/[0.06] py-1.5 px-4 text-[11px] font-mono text-slate-400">
+    <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-2">
+      <div class="flex items-center gap-2">
+        <span class="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+        <span class="text-white font-semibold">INFRAESTRUTURA ONLINE</span>
+        <span class="text-slate-500">|</span>
+        <span class="text-slate-400">SLA 99.98%</span>
+        <span class="text-slate-500">|</span>
+        <span class="hidden sm:inline text-slate-400">Edge FastCDN Multi-Região Ativo</span>
+      </div>
+      <div class="flex items-center gap-4 text-[11px]">
+        <span class="text-slate-400 hidden md:inline">Console v2.5.4 Enterprise</span>
+        <a href="https://demo.sigmast.site" target="_blank" class="text-[#009EF7] hover:underline flex items-center gap-1 font-semibold">
+          <span>Acessar Ambiente Demo</span>
+          <i data-lucide="arrow-up-right" class="w-3 h-3"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================
+       HEADER CORPORATIVO (NAVBAR)
+       ========================================== -->
+  <header class="sticky top-0 z-40 backdrop-blur-xl bg-[#06080d]/85 border-b border-white/[0.08]">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
       
-      <!-- Brand Logo -->
+      <!-- Brand & Corporate Identity -->
       <a href="#" class="flex items-center gap-3 group">
-        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-[#009EF7] to-[#7239EA] flex items-center justify-center shadow-lg shadow-[#009EF7]/20 group-hover:scale-105 transition-transform duration-200">
-          <svg class="w-5 h-5 text-white fill-current" viewBox="0 0 24 24">
-            <path d="M5 3l14 9-14 9V3z"/>
-          </svg>
+        <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-[#009EF7] to-[#005299] p-0.5 shadow-md shadow-[#009EF7]/20 flex items-center justify-center">
+          <div class="w-full h-full bg-[#080c14] rounded-[7px] flex items-center justify-center">
+            <svg class="w-5 h-5 text-[#009EF7]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+              <polyline points="2 17 12 22 22 17"></polyline>
+              <polyline points="2 12 12 17 22 12"></polyline>
+            </svg>
+          </div>
         </div>
         <div class="flex flex-col">
-          <span class="text-base font-extrabold tracking-tight text-white flex items-center gap-1.5">
-            SIGMA <span class="text-[#009EF7]">PRO</span>
-            <span class="text-[9px] font-bold px-1.5 py-0.5 rounded bg-white/10 text-white/80 uppercase">v2.5</span>
-          </span>
-          <span class="text-[10px] text-slate-400 font-medium tracking-wide">PAINEL DE GESTÃO IPTV</span>
+          <div class="flex items-center gap-2">
+            <span class="text-base font-extrabold tracking-tight text-white font-sans">
+              SIGMA<span class="text-[#009EF7]">ENTERPRISE</span>
+            </span>
+            <span class="text-[9px] font-mono font-bold px-1.5 py-0.5 rounded bg-white/10 text-slate-300 uppercase tracking-wide">B2B</span>
+          </div>
+          <span class="text-[10px] text-slate-400 font-medium tracking-wide">Plataforma de Gestão IPTV & Streaming</span>
         </div>
       </a>
 
-      <!-- Desktop Nav Links -->
-      <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-300">
-        <a href="#temas" class="hover:text-white transition-colors">Multi-Tema</a>
-        <a href="#recursos" class="hover:text-white transition-colors">Recursos</a>
-        <a href="#menus" class="hover:text-white transition-colors">Navegação</a>
-        <a href="#simulador" class="hover:text-white transition-colors">Simulador</a>
-        <a href="#faq" class="hover:text-white transition-colors">FAQ</a>
+      <!-- Desktop Navigation Links -->
+      <nav class="hidden lg:flex items-center gap-8 text-xs font-semibold text-slate-300 uppercase tracking-wider">
+        <a href="#plataforma" class="hover:text-white transition-colors">Plataforma</a>
+        <a href="#console-showcase" class="hover:text-white transition-colors">Console & Temas</a>
+        <a href="#arquitetura" class="hover:text-white transition-colors">Arquitetura</a>
+        <a href="#roi" class="hover:text-white transition-colors">Simulador ROI</a>
+        <a href="#planos" class="hover:text-white transition-colors">Planos Corporativos</a>
+        <a href="#faq" class="hover:text-white transition-colors">Governança</a>
       </nav>
 
-      <!-- CTA Buttons -->
+      <!-- Action Buttons -->
       <div class="flex items-center gap-3">
         <a 
           href="https://demo.sigmast.site" 
           target="_blank" 
           rel="noopener noreferrer"
-          class="hidden sm:inline-flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-semibold bg-white/5 hover:bg-white/10 text-white border border-white/10 transition-all hover:border-white/20"
+          class="hidden sm:inline-flex items-center gap-2 px-4 py-2.5 rounded-lg text-xs font-semibold bg-white/5 hover:bg-white/10 text-slate-200 border border-white/10 transition-all hover:border-white/20"
         >
-          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
-          <span>Acessar Demo</span>
-          <i data-lucide="external-link" class="w-3.5 h-3.5 text-slate-400"></i>
+          <i data-lucide="play" class="w-3.5 h-3.5 text-[#009EF7]"></i>
+          <span>Ambiente de Demonstração</span>
         </a>
 
         <a 
           href="#contato" 
-          class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs font-bold bg-[#009EF7] hover:bg-[#0086D1] text-white shadow-lg shadow-[#009EF7]/25 hover:shadow-[#009EF7]/40 transition-all hover:-translate-y-0.5"
+          class="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg text-xs font-bold bg-[#009EF7] hover:bg-[#0086D1] text-white shadow-lg shadow-[#009EF7]/20 transition-all"
         >
-          <i data-lucide="zap" class="w-3.5 h-3.5 fill-current"></i>
-          <span>Quero Meu Painel</span>
+          <span>Falar com Consultor</span>
+          <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
         </a>
       </div>
 
     </div>
   </header>
 
-  <main class="relative z-10 pt-28">
+  <main class="relative z-10">
 
     <!-- ==========================================
-         HERO SECTION
+         HERO SECTION CORPORATIVA
          ========================================== -->
-    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 pb-16 text-center">
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-20 text-center relative">
       
-      <!-- Pill Badge -->
-      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#009EF7]/10 border border-[#009EF7]/25 text-[#009EF7] text-xs font-semibold mb-8 animate-fade-in">
-        <span class="flex h-2 w-2 rounded-full bg-[#009EF7]"></span>
-        <span>NOVIDADE: ARQUITETURA MULTI-TEMA EXCLUSIVA 2026</span>
+      <!-- Enterprise Tag -->
+      <div class="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-[#009EF7]/10 border border-[#009EF7]/30 text-[#009EF7] text-xs font-semibold mb-8">
+        <span class="w-2 h-2 rounded-full bg-[#009EF7]"></span>
+        <span class="font-mono text-[11px] uppercase tracking-wider">SOLUÇÃO CORPORATIVA DE ALTA DISPONIBILIDADE</span>
       </div>
 
       <!-- Main Headline -->
-      <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold text-white tracking-tight leading-[1.1] max-w-4xl mx-auto">
-        O Painel IPTV Mais <span class="bg-gradient-to-r from-[#009EF7] via-[#38bdf8] to-[#7239EA] bg-clip-text text-transparent">Rápido, Elegante</span> e Sob Medida.
+      <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold text-white tracking-tight leading-[1.08] max-w-5xl mx-auto">
+        Infraestrutura Unificada para <br class="hidden sm:block">
+        <span class="bg-gradient-to-r from-white via-slate-100 to-slate-400 bg-clip-text text-transparent">Gestão e Escala de Operações IPTV</span>
       </h1>
 
-      <!-- Subtitle -->
-      <p class="mt-6 text-base sm:text-lg text-slate-400 max-w-2xl mx-auto font-normal leading-relaxed">
-        Desenvolvido para revendedores e operadores que buscam autoridade visual, velocidade instantânea sem lentidão e controle 100% White Label com domínio próprio.
+      <!-- Corporate Subtitle -->
+      <p class="mt-6 text-base sm:text-lg text-slate-400 max-w-3xl mx-auto font-normal leading-relaxed">
+        Elimine gargalos de atendimento e instabilidade operacional. O Sigma Enterprise entrega controle total da sua base de assinantes, rede de sub-revendas hierárquica e telemetria em tempo real com arquitetura 100% White Label.
       </p>
 
       <!-- Action Buttons -->
-      <div class="mt-9 flex flex-col sm:flex-row items-center justify-center gap-4">
+      <div class="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
         <a 
           href="https://demo.sigmast.site" 
           target="_blank" 
           rel="noopener noreferrer"
-          class="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-xl text-sm font-bold bg-[#009EF7] hover:bg-[#0086D1] text-white shadow-xl shadow-[#009EF7]/30 hover:shadow-[#009EF7]/50 transition-all hover:-translate-y-0.5"
+          class="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 rounded-xl text-sm font-bold bg-[#009EF7] hover:bg-[#0086D1] text-white shadow-xl shadow-[#009EF7]/25 transition-all hover:-translate-y-0.5"
         >
-          <i data-lucide="play" class="w-4 h-4 fill-current"></i>
-          <span>Testar Demonstração ao Vivo</span>
-          <i data-lucide="arrow-right" class="w-4 h-4"></i>
+          <i data-lucide="laptop" class="w-4 h-4"></i>
+          <span>Acessar Console Demo ao Vivo</span>
+          <i data-lucide="arrow-right" class="w-4 h-4 text-white/70"></i>
         </a>
 
         <a 
           href="#contato" 
-          class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl text-sm font-semibold bg-white/5 hover:bg-white/10 text-white border border-white/10 hover:border-white/20 transition-all"
+          class="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-7 py-4 rounded-xl text-sm font-semibold bg-white/[0.04] hover:bg-white/[0.08] text-slate-200 border border-white/10 hover:border-white/20 transition-all"
         >
-          <i data-lucide="message-circle" class="w-4 h-4 text-emerald-400"></i>
-          <span>Falar com Atendimento</span>
+          <i data-lucide="message-square" class="w-4 h-4 text-emerald-400"></i>
+          <span>Solicitar Apresentação Comercial</span>
         </a>
       </div>
 
-      <!-- Quick Trust Badges -->
-      <div class="mt-12 pt-8 border-t border-white/[0.06] grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto text-xs text-slate-400 font-medium">
-        <div class="flex items-center justify-center gap-2">
-          <i data-lucide="shield-check" class="w-4 h-4 text-[#009EF7]"></i>
-          <span>100% White Label</span>
+      <!-- Métricas Institucionais / Trust Bar -->
+      <div class="mt-16 pt-10 border-t border-white/[0.06] grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto text-left">
+        <div class="border-l-2 border-[#009EF7] pl-4">
+          <p class="text-2xl sm:text-3xl font-extrabold text-white font-mono tracking-tight">+1.8M</p>
+          <p class="text-xs text-slate-400 mt-1 uppercase font-semibold tracking-wider">Conexões Diárias</p>
         </div>
-        <div class="flex items-center justify-center gap-2">
-          <i data-lucide="zap" class="w-4 h-4 text-amber-400"></i>
-          <span>FastCDN Otimizado</span>
+        <div class="border-l-2 border-emerald-500 pl-4">
+          <p class="text-2xl sm:text-3xl font-extrabold text-white font-mono tracking-tight">99.98%</p>
+          <p class="text-xs text-slate-400 mt-1 uppercase font-semibold tracking-wider">Uptime Garantido</p>
         </div>
-        <div class="flex items-center justify-center gap-2">
-          <i data-lucide="palette" class="w-4 h-4 text-purple-400"></i>
-          <span>2 Temas Consagrados</span>
+        <div class="border-l-2 border-cyan-500 pl-4">
+          <p class="text-2xl sm:text-3xl font-extrabold text-white font-mono tracking-tight">&lt; 160ms</p>
+          <p class="text-xs text-slate-400 mt-1 uppercase font-semibold tracking-wider">Latência de API</p>
         </div>
-        <div class="flex items-center justify-center gap-2">
-          <i data-lucide="smartphone" class="w-4 h-4 text-emerald-400"></i>
-          <span>Mobile & Desktop</span>
+        <div class="border-l-2 border-purple-500 pl-4">
+          <p class="text-2xl sm:text-3xl font-extrabold text-white font-mono tracking-tight">100%</p>
+          <p class="text-xs text-slate-400 mt-1 uppercase font-semibold tracking-wider">White Label Isolado</p>
         </div>
       </div>
 
     </section>
 
     <!-- ==========================================
-         SHOWCASE DO PAINEL (INTERACTIVE MOCKUP)
+         SHOWCASE DO CONSOLE (PRINTS REAIS & TELEMETRIA)
          ========================================== -->
-    <section id="temas" class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <section id="console-showcase" class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
       
-      <!-- Section Header -->
-      <div class="text-center mb-8">
-        <span class="text-xs font-bold uppercase tracking-widest text-[#009EF7]">Visualização Real em Tempo Real</span>
-        <h2 class="text-2xl sm:text-4xl font-extrabold text-white mt-1">Escolha a Experiência que Combina com Você</h2>
-        <p class="text-slate-400 text-sm mt-2 max-w-xl mx-auto">
-          Alterne entre os dois layouts visuais do painel com apenas um clique. Ambos rodam na mesma base ultra veloz.
-        </p>
-      </div>
-
-      <!-- Mockup Window Container -->
-      <div class="glass-card rounded-2xl p-2 sm:p-4 shadow-2xl border border-white/10 relative overflow-hidden">
-        
-        <!-- Window Controls Bar & Tabs -->
-        <div class="flex flex-col sm:flex-row items-center justify-between gap-4 pb-4 px-2 border-b border-white/[0.06]">
-          
-          <!-- Mac Dots + Fake URL -->
-          <div class="flex items-center gap-4 w-full sm:w-auto">
-            <div class="flex items-center gap-1.5">
-              <span class="w-3 h-3 rounded-full bg-red-500/80"></span>
-              <span class="w-3 h-3 rounded-full bg-yellow-500/80"></span>
-              <span class="w-3 h-3 rounded-full bg-green-500/80"></span>
-            </div>
-            <div class="flex items-center gap-2 px-3 py-1 rounded-lg bg-black/40 border border-white/5 text-[11px] text-slate-400 font-mono">
-              <i data-lucide="lock" class="w-3 h-3 text-emerald-400"></i>
-              <span id="mockup-url">https://demo.sigmast.site/#/dashboard</span>
-            </div>
-          </div>
-
-          <!-- Interactive Theme Switcher Tabs -->
-          <div class="flex items-center gap-2 p-1 rounded-xl bg-black/50 border border-white/10 w-full sm:w-auto">
-            <button 
-              id="tab-btn-sigma" 
-              onclick="switchThemeTab('sigma')"
-              class="flex-1 sm:flex-none flex items-center justify-center gap-2 px-4 py-2 rounded-lg text-xs font-bold transition-all bg-[#009EF7] text-white shadow-md shadow-[#009EF7]/30"
-            >
-              <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
-              <span>Sigma Pro</span>
-              <span class="text-[9px] px-1.5 py-0.2 rounded bg-white/20 font-semibold">Executivo</span>
-            </button>
-
-            <button 
-              id="tab-btn-xtream" 
-              onclick="switchThemeTab('xtream')"
-              class="flex-1 sm:flex-none flex items-center justify-center gap-2 px-4 py-2 rounded-lg text-xs font-bold transition-all text-slate-400 hover:text-white hover:bg-white/5"
-            >
-              <i data-lucide="tv" class="w-3.5 h-3.5"></i>
-              <span>Xtream Clássico</span>
-              <span class="text-[9px] px-1.5 py-0.2 rounded bg-white/10 font-semibold">Tradicional</span>
-            </button>
-          </div>
-
+      <!-- Header da Seção -->
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10 pb-6 border-b border-white/[0.08]">
+        <div>
+          <span class="text-xs font-mono font-bold text-[#009EF7] uppercase tracking-wider">MÓDULO DE INTERFACE & EXPERIÊNCIA</span>
+          <h2 class="text-2xl sm:text-4xl font-extrabold text-white mt-1.5 tracking-tight">
+            Console de Gestão de Nova Geração
+          </h2>
+          <p class="text-slate-400 text-sm mt-2 max-w-xl">
+            Duas arquiteturas visuais completas integradas na mesma base de dados. Alterne entre os modelos sem necessidade de migração ou reinicialização.
+          </p>
         </div>
 
-        <!-- Screenshot Display Area -->
-        <div class="relative mt-3 rounded-xl overflow-hidden bg-[#0A0D14] border border-white/5 min-h-[320px] sm:min-h-[500px] flex items-center justify-center group">
+        <!-- Seletor de Modelo do Console -->
+        <div class="flex items-center gap-2 p-1.5 rounded-xl bg-[#0b0f17] border border-white/10 shrink-0">
+          <button 
+            id="tab-btn-sigma" 
+            onclick="switchConsoleTheme('sigma')"
+            class="flex items-center gap-2 px-5 py-2.5 rounded-lg text-xs font-bold transition-all bg-[#009EF7] text-white shadow-md shadow-[#009EF7]/20"
+          >
+            <i data-lucide="layout-dashboard" class="w-4 h-4"></i>
+            <span>Sigma Pro (Executivo Dark)</span>
+          </button>
+
+          <button 
+            id="tab-btn-xtream" 
+            onclick="switchConsoleTheme('xtream')"
+            class="flex items-center gap-2 px-5 py-2.5 rounded-lg text-xs font-bold transition-all text-slate-400 hover:text-white hover:bg-white/5"
+          >
+            <i data-lucide="server" class="w-4 h-4"></i>
+            <span>Xtream Enterprise (Consagrado)</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Moldura do Console Corporativo -->
+      <div class="rounded-2xl bg-[#080b12] border border-white/10 p-3 sm:p-5 shadow-2xl relative">
+        
+        <!-- Barra de Controle de Janela -->
+        <div class="flex flex-col sm:flex-row items-center justify-between gap-4 pb-4 px-2 border-b border-white/[0.06]">
           
-          <!-- Sigma Pro Image -->
-          <img 
-            id="img-sigma" 
-            src="assets/sigma-pro-default.png" 
-            alt="Dashboard Sigma Pro" 
-            class="w-full h-auto object-cover object-top transition-opacity duration-300"
-          >
-
-          <!-- Xtream Classic Image (Hidden initially) -->
-          <img 
-            id="img-xtream" 
-            src="assets/xtream-classic-default.png" 
-            alt="Dashboard Xtream Clássico" 
-            class="w-full h-auto object-cover object-top transition-opacity duration-300 hidden"
-          >
-
-          <!-- Floating Badge Overlay -->
-          <div class="absolute bottom-4 left-4 right-4 sm:right-auto bg-[#07090e]/90 backdrop-blur-md border border-white/10 px-4 py-2.5 rounded-xl flex items-center justify-between sm:justify-start gap-4 shadow-xl">
-            <div class="flex items-center gap-2.5">
-              <span id="active-theme-dot" class="w-2.5 h-2.5 rounded-full bg-[#009EF7]"></span>
-              <div>
-                <p id="active-theme-name" class="text-xs font-bold text-white leading-none">Tema Ativo: Sigma Pro</p>
-                <p id="active-theme-sub" class="text-[10px] text-slate-400 mt-0.5">Cards métricos em tempo real, paleta escura profunda e alta legibilidade</p>
-              </div>
+          <div class="flex items-center gap-3">
+            <div class="flex items-center gap-1.5">
+              <span class="w-3 h-3 rounded-full bg-slate-700"></span>
+              <span class="w-3 h-3 rounded-full bg-slate-700"></span>
+              <span class="w-3 h-3 rounded-full bg-slate-700"></span>
             </div>
+            <div class="flex items-center gap-2 px-3 py-1 rounded bg-[#0e131d] border border-white/5 text-[11px] font-mono text-slate-400">
+              <i data-lucide="lock" class="w-3 h-3 text-emerald-400"></i>
+              <span id="console-url">https://demo.sigmast.site/#/dashboard</span>
+            </div>
+          </div>
+
+          <div class="flex items-center gap-3 text-xs">
+            <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-emerald-500/10 text-emerald-400 font-mono text-[11px]">
+              <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+              FastCDN Latency: 18ms
+            </span>
             <a 
               href="https://demo.sigmast.site" 
               target="_blank" 
-              rel="noopener noreferrer" 
-              class="px-3 py-1.5 rounded-lg bg-[#009EF7]/15 hover:bg-[#009EF7]/25 text-[#009EF7] text-xs font-bold flex items-center gap-1.5 transition-colors"
+              class="hidden sm:inline-flex items-center gap-1.5 text-xs text-[#009EF7] hover:underline font-semibold"
             >
-              <span>Ver ao Vivo</span>
-              <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
+              <span>Abrir Painel Demo Completo</span>
+              <i data-lucide="external-link" class="w-3 h-3"></i>
             </a>
           </div>
 
         </div>
 
-      </div>
-
-    </section>
-
-    <!-- ==========================================
-         SEÇÃO: MENUS LATERAIS DEDICADOS
-         ========================================== -->
-    <section id="menus" class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 border-t border-white/[0.06]">
-      
-      <div class="text-center mb-12">
-        <span class="text-xs font-bold uppercase tracking-widest text-[#009EF7]">Arquitetura de Navegação</span>
-        <h2 class="text-2xl sm:text-4xl font-extrabold text-white mt-1">Menus Pensados para Máxima Produtividade</h2>
-        <p class="text-slate-400 text-sm mt-2 max-w-xl mx-auto">
-          Tudo o que você precisa a 1 clique de distância. Sem labirintos, sem menus confusos.
-        </p>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-        
-        <!-- Card Barra Sigma Pro -->
-        <div class="glass-card rounded-2xl p-6 border border-white/10 flex flex-col sm:flex-row gap-6 items-center">
-          <div class="w-full sm:w-1/2 rounded-xl overflow-hidden border border-white/10 bg-[#07090e] shadow-xl">
-            <img 
-              src="assets/sidebar-sigma-pro.png" 
-              alt="Menu Lateral Sigma Pro" 
-              class="w-full h-auto object-cover object-top hover:scale-105 transition-transform duration-300"
-            >
-          </div>
-          <div class="w-full sm:w-1/2 flex flex-col justify-center">
-            <div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-[#009EF7]/15 text-[#009EF7] text-[11px] font-bold w-fit mb-3">
-              <span>SIGMA PRO</span>
-            </div>
-            <h3 class="text-lg font-bold text-white">Menu Lateral Sigma Pro</h3>
-            <p class="text-xs text-slate-400 mt-2 leading-relaxed">
-              Design executivo e contemporâneo com agrupamento por categorias: Clientes, Revendas, Faturamento e Preferências. Destaque em pills vibrantes para navegação rápida.
-            </p>
-            <ul class="mt-4 space-y-2 text-xs text-slate-300">
-              <li class="flex items-center gap-2">
-                <i data-lucide="check" class="w-4 h-4 text-[#009EF7]"></i>
-                <span>Categorias em seções limpas</span>
-              </li>
-              <li class="flex items-center gap-2">
-                <i data-lucide="check" class="w-4 h-4 text-[#009EF7]"></i>
-                <span>Acesso instantâneo a lixeira e renovações</span>
-              </li>
-              <li class="flex items-center gap-2">
-                <i data-lucide="check" class="w-4 h-4 text-[#009EF7]"></i>
-                <span>Atalhos de personalização da marca</span>
-              </li>
-            </ul>
-          </div>
-        </div>
-
-        <!-- Card Barra Xtream Clássica -->
-        <div class="glass-card rounded-2xl p-6 border border-white/10 flex flex-col sm:flex-row gap-6 items-center">
-          <div class="w-full sm:w-1/2 rounded-xl overflow-hidden border border-white/10 bg-[#07090e] shadow-xl">
-            <img 
-              src="assets/sidebar-xtream-classic.png" 
-              alt="Menu Lateral Xtream Clássico" 
-              class="w-full h-auto object-cover object-top hover:scale-105 transition-transform duration-300"
-            >
-          </div>
-          <div class="w-full sm:w-1/2 flex flex-col justify-center">
-            <div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-cyan-500/15 text-cyan-400 text-[11px] font-bold w-fit mb-3">
-              <span>XTREAM CLÁSSICO</span>
-            </div>
-            <h3 class="text-lg font-bold text-white">Menu Barra Xtream Clássica</h3>
-            <p class="text-xs text-slate-400 mt-2 leading-relaxed">
-              Inspirado no visual consagrado com status do servidor em tempo real (Online), badge de Painel Master e acordeões elegantes para gerenciar conexões com fluidez máxima.
-            </p>
-            <ul class="mt-4 space-y-2 text-xs text-slate-300">
-              <li class="flex items-center gap-2">
-                <i data-lucide="check" class="w-4 h-4 text-cyan-400"></i>
-                <span>Status do Servidor Principal Online</span>
-              </li>
-              <li class="flex items-center gap-2">
-                <i data-lucide="check" class="w-4 h-4 text-cyan-400"></i>
-                <span>Pastas retráteis com setas dinâmicas</span>
-              </li>
-              <li class="flex items-center gap-2">
-                <i data-lucide="check" class="w-4 h-4 text-cyan-400"></i>
-                <span>Selo de Painel Master exclusivo</span>
-              </li>
-            </ul>
-          </div>
-        </div>
-
-      </div>
-
-    </section>
-
-    <!-- ==========================================
-         SEÇÃO: 6 PILARES DE ALTA PERFORMANCE
-         ========================================== -->
-    <section id="recursos" class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 border-t border-white/[0.06]">
-      
-      <div class="text-center mb-12">
-        <span class="text-xs font-bold uppercase tracking-widest text-[#009EF7]">Engenharia & Funcionalidades</span>
-        <h2 class="text-2xl sm:text-4xl font-extrabold text-white mt-1">Tudo o que sua Operação Precisa para Escalar</h2>
-        <p class="text-slate-400 text-sm mt-2 max-w-xl mx-auto">
-          Recursos projetados para economizar seu tempo, reduzir cancelamentos e aumentar a fidelização.
-        </p>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        
-        <!-- Feature 1 -->
-        <div class="glass-card rounded-2xl p-6 border border-white/10 hover:border-[#009EF7]/40 transition-all hover:-translate-y-1">
-          <div class="w-10 h-10 rounded-xl bg-[#009EF7]/15 border border-[#009EF7]/30 flex items-center justify-center text-[#009EF7] mb-4">
-            <i data-lucide="fingerprint" class="w-5 h-5"></i>
-          </div>
-          <h3 class="text-base font-bold text-white">100% White Label</h3>
-          <p class="text-xs text-slate-400 mt-2 leading-relaxed">
-            Personalize seu nome, logotipo, cores primárias, favicon e ative seu próprio domínio personalizado com SSL grátis emitido automaticamente.
-          </p>
-        </div>
-
-        <!-- Feature 2 -->
-        <div class="glass-card rounded-2xl p-6 border border-white/10 hover:border-[#009EF7]/40 transition-all hover:-translate-y-1">
-          <div class="w-10 h-10 rounded-xl bg-amber-500/15 border border-amber-500/30 flex items-center justify-center text-amber-400 mb-4">
-            <i data-lucide="zap" class="w-5 h-5"></i>
-          </div>
-          <h3 class="text-base font-bold text-white">Velocidade FastCDN</h3>
-          <p class="text-xs text-slate-400 mt-2 leading-relaxed">
-            Painel leve e ultrarrápido compilado em Vite/React com cache distribuído. Carrega em menos de 0.2 segundos sem pesar no navegador.
-          </p>
-        </div>
-
-        <!-- Feature 3 -->
-        <div class="glass-card rounded-2xl p-6 border border-white/10 hover:border-[#009EF7]/40 transition-all hover:-translate-y-1">
-          <div class="w-10 h-10 rounded-xl bg-emerald-500/15 border border-emerald-500/30 flex items-center justify-center text-emerald-400 mb-4">
-            <i data-lucide="user-plus" class="w-5 h-5"></i>
-          </div>
-          <h3 class="text-base font-bold text-white">Testes Rápidos em 1 Clique</h3>
-          <p class="text-xs text-slate-400 mt-2 leading-relaxed">
-            Geração instantânea de testes para clientes com dados de login, links M3U e aplicativo pré-configurados prontos para envio no WhatsApp.
-          </p>
-        </div>
-
-        <!-- Feature 4 -->
-        <div class="glass-card rounded-2xl p-6 border border-white/10 hover:border-[#009EF7]/40 transition-all hover:-translate-y-1">
-          <div class="w-10 h-10 rounded-xl bg-purple-500/15 border border-purple-500/30 flex items-center justify-center text-purple-400 mb-4">
-            <i data-lucide="network" class="w-5 h-5"></i>
-          </div>
-          <h3 class="text-base font-bold text-white">Rede de Sub-Revendas</h3>
-          <p class="text-xs text-slate-400 mt-2 leading-relaxed">
-            Crie revendedores e sub-revendas com controle de créditos, limites, extratos financeiros e permissões sob medida para o seu modelo de negócio.
-          </p>
-        </div>
-
-        <!-- Feature 5 -->
-        <div class="glass-card rounded-2xl p-6 border border-white/10 hover:border-[#009EF7]/40 transition-all hover:-translate-y-1">
-          <div class="w-10 h-10 rounded-xl bg-blue-500/15 border border-blue-500/30 flex items-center justify-center text-blue-400 mb-4">
-            <i data-lucide="bell" class="w-5 h-5"></i>
-          </div>
-          <h3 class="text-base font-bold text-white">Avisos e Notificações</h3>
-          <p class="text-xs text-slate-400 mt-2 leading-relaxed">
-            Envie comunicados visuais na tela inicial de todos os seus revendedores sobre manutenções, novidades e novidades na grade com facilidade.
-          </p>
-        </div>
-
-        <!-- Feature 6 -->
-        <div class="glass-card rounded-2xl p-6 border border-white/10 hover:border-[#009EF7]/40 transition-all hover:-translate-y-1">
-          <div class="w-10 h-10 rounded-xl bg-rose-500/15 border border-rose-500/30 flex items-center justify-center text-rose-400 mb-4">
-            <i data-lucide="shield" class="w-5 h-5"></i>
-          </div>
-          <h3 class="text-base font-bold text-white">Lixeira e Proteção de Dados</h3>
-          <p class="text-xs text-slate-400 mt-2 leading-relaxed">
-            Nunca perca um cliente por engano. Lixeira de segurança com restauração em 1 clique e histórico detalhado de alterações e conexões.
-          </p>
-        </div>
-
-      </div>
-
-    </section>
-
-    <!-- ==========================================
-         SIMULADOR DE LUCRATIVIDADE
-         ========================================== -->
-    <section id="simulador" class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16 border-t border-white/[0.06]">
-      
-      <div class="text-center mb-10">
-        <span class="text-xs font-bold uppercase tracking-widest text-[#009EF7]">Planejamento Financeiro</span>
-        <h2 class="text-2xl sm:text-4xl font-extrabold text-white mt-1">Simule o Faturamento da sua Operação</h2>
-        <p class="text-slate-400 text-sm mt-2">
-          Veja quanto você pode lucrar mensalmente gerenciando seus clientes no nosso painel.
-        </p>
-      </div>
-
-      <div class="glass-card rounded-2xl p-6 sm:p-10 border border-white/10 shadow-2xl">
-        
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+        <!-- Área de Exibição das Telas Reais -->
+        <div class="mt-4 rounded-xl overflow-hidden border border-white/5 bg-[#05070a] relative group">
           
-          <!-- Controles do Simulador -->
-          <div class="space-y-6">
+          <!-- Imagem Sigma Pro -->
+          <img 
+            id="img-sigma" 
+            src="assets/sigma-pro-default.png" 
+            alt="Painel Sigma Pro Dashboard" 
+            class="w-full h-auto object-cover object-top transition-opacity duration-300"
+          >
+
+          <!-- Imagem Xtream Clássico -->
+          <img 
+            id="img-xtream" 
+            src="assets/xtream-classic-default.png" 
+            alt="Painel Xtream Enterprise Dashboard" 
+            class="w-full h-auto object-cover object-top transition-opacity duration-300 hidden"
+          >
+
+          <!-- Overlay Corporativo com Informações do Modo -->
+          <div class="absolute bottom-4 left-4 right-4 bg-[#080c14]/90 backdrop-blur-md border border-white/10 p-4 rounded-xl flex flex-col sm:flex-row sm:items-center justify-between gap-4 shadow-2xl">
+            <div class="flex items-start gap-3">
+              <div id="console-badge-icon" class="w-9 h-9 rounded-lg bg-[#009EF7]/15 border border-[#009EF7]/30 flex items-center justify-center text-[#009EF7] shrink-0 mt-0.5">
+                <i data-lucide="layout" class="w-5 h-5"></i>
+              </div>
+              <div>
+                <h4 id="console-mode-title" class="text-sm font-bold text-white">Modelo Ativo: Sigma Pro v2.5</h4>
+                <p id="console-mode-desc" class="text-xs text-slate-400 mt-0.5">
+                  Cockpit executivo com cartões de telemetria (Clientes, Testes Ativos, Expirados, Conexões ao Vivo e Revendas) em grid de alta densidade.
+                </p>
+              </div>
+            </div>
+
+            <div class="flex items-center gap-3 shrink-0">
+              <a 
+                href="https://demo.sigmast.site" 
+                target="_blank" 
+                class="px-4 py-2 rounded-lg bg-[#009EF7] hover:bg-[#0086D1] text-white text-xs font-bold transition-all shadow-md"
+              >
+                Testar Este Modo
+              </a>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- ==========================================
+         SEÇÃO DE MENUS LATERAIS & NAVEGAÇÃO
+         ========================================== -->
+    <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 border-t border-white/[0.08]">
+      
+      <div class="text-center max-w-3xl mx-auto mb-12">
+        <span class="text-xs font-mono font-bold text-[#009EF7] uppercase tracking-wider">USABILIDADE OPERACIONAL</span>
+        <h2 class="text-2xl sm:text-4xl font-extrabold text-white mt-1.5 tracking-tight">
+          Navegação Estruturada para Alta Produtividade
+        </h2>
+        <p class="text-slate-400 text-sm mt-2">
+          Compare as duas opções de menus laterais nativos. O operador escolhe a estrutura com a qual sua equipe tem maior familiaridade.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
+        
+        <!-- Menu Sigma Pro Card -->
+        <div class="b2b-card rounded-2xl p-6 sm:p-8 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="text-xs font-mono font-bold px-2.5 py-1 rounded bg-[#009EF7]/10 text-[#009EF7] border border-[#009EF7]/20 uppercase">
+                Arquitetura Modular
+              </span>
+              <span class="text-xs text-slate-500 font-mono">Layout Sigma</span>
+            </div>
             
-            <!-- Slider Clientes -->
+            <h3 class="text-xl font-bold text-white">Barra de Navegação Sigma Pro</h3>
+            <p class="text-xs text-slate-400 mt-2 leading-relaxed">
+              Estruturada em agrupamentos funcionais: <strong>Clientes & Acessos</strong>, <strong>Rede de Revendas</strong> e <strong>Preferências do Sistema</strong>. Pills de alto contraste facilitam a localização visual do operador.
+            </p>
+
+            <div class="mt-6 rounded-xl overflow-hidden border border-white/10 bg-[#06080d] p-2">
+              <img 
+                src="assets/sidebar-sigma-pro.png" 
+                alt="Estrutura do Menu Sigma Pro" 
+                class="w-full h-auto rounded-lg object-cover object-top max-h-[380px]"
+              >
+            </div>
+          </div>
+
+          <div class="mt-6 pt-4 border-t border-white/[0.06] flex items-center justify-between text-xs text-slate-400">
+            <span>✓ Assistente de Renovação integrado</span>
+            <span>✓ Acesso rápido à Lixeira de Clientes</span>
+          </div>
+        </div>
+
+        <!-- Menu Xtream Clássico Card -->
+        <div class="b2b-card rounded-2xl p-6 sm:p-8 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="text-xs font-mono font-bold px-2.5 py-1 rounded bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 uppercase">
+                Padrão Xtream
+              </span>
+              <span class="text-xs text-slate-500 font-mono">Layout Clássico</span>
+            </div>
+            
+            <h3 class="text-xl font-bold text-white">Barra de Navegação Xtream Clássica</h3>
+            <p class="text-xs text-slate-400 mt-2 leading-relaxed">
+              Consagrada por operadores veteranos. Traz o indicador de integridade do <strong>Servidor Principal (Online)</strong>, selo de Painel Master e acordeões sanfonados para controle ágil de linhas e revendas.
+            </p>
+
+            <div class="mt-6 rounded-xl overflow-hidden border border-white/10 bg-[#06080d] p-2">
+              <img 
+                src="assets/sidebar-xtream-classic.png" 
+                alt="Estrutura do Menu Xtream Clássico" 
+                class="w-full h-auto rounded-lg object-cover object-top max-h-[380px]"
+              >
+            </div>
+          </div>
+
+          <div class="mt-6 pt-4 border-t border-white/[0.06] flex items-center justify-between text-xs text-slate-400">
+            <span>✓ Telemetria de Servidor em tempo real</span>
+            <span>✓ Hierarquia clássica com sub-pastas</span>
+          </div>
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- ==========================================
+         PILAR DE RECURSOS CORPORATIVOS (BENTO GRID)
+         ========================================== -->
+    <section id="plataforma" class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 border-t border-white/[0.08]">
+      
+      <div class="text-center max-w-3xl mx-auto mb-14">
+        <span class="text-xs font-mono font-bold text-[#009EF7] uppercase tracking-wider">CAPACIDADE DO SISTEMA</span>
+        <h2 class="text-2xl sm:text-4xl font-extrabold text-white mt-1.5 tracking-tight">
+          Projetado para Atender Operações de Todos os Portes
+        </h2>
+        <p class="text-slate-400 text-sm mt-2">
+          Tecnologia desenvolvida especificamente para resolver os principais gargalos de operadoras e revendedores de streaming.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        
+        <!-- Card 1 -->
+        <div class="b2b-card rounded-2xl p-7 flex flex-col justify-between">
+          <div>
+            <div class="w-12 h-12 rounded-xl bg-[#009EF7]/10 border border-[#009EF7]/20 flex items-center justify-center text-[#009EF7] mb-5">
+              <i data-lucide="shield-check" class="w-6 h-6"></i>
+            </div>
+            <h3 class="text-base font-bold text-white">White Label Absoluto</h3>
+            <p class="text-xs text-slate-400 mt-2.5 leading-relaxed">
+              Sua identidade visual completa: logotipo, nome corporativo, paleta de cores primárias, ícone de favoritos (favicon) e domínio próprio com certificado SSL automatizado. Seus clientes e revendedores nunca veem a marca da plataforma de origem.
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-white/[0.06] text-[11px] font-mono text-[#009EF7]">
+            DOMÍNIO PRÓPRIO + SSL GRÁTIS
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="b2b-card rounded-2xl p-7 flex flex-col justify-between">
+          <div>
+            <div class="w-12 h-12 rounded-xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-400 mb-5">
+              <i data-lucide="zap" class="w-6 h-6"></i>
+            </div>
+            <h3 class="text-base font-bold text-white">Motor de Alta Performance FastCDN</h3>
+            <p class="text-xs text-slate-400 mt-2.5 leading-relaxed">
+              Arquitetura SPA compilada em Vite com distribuição estática em nós CDN. Carregamento instantâneo em menos de 180ms, sem travamentos ou lentidões mesmo durante horários nobres de transmissão simultânea.
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-white/[0.06] text-[11px] font-mono text-amber-400">
+            LATÊNCIA &lt; 180MS
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="b2b-card rounded-2xl p-7 flex flex-col justify-between">
+          <div>
+            <div class="w-12 h-12 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400 mb-5">
+              <i data-lucide="user-check" class="w-6 h-6"></i>
+            </div>
+            <h3 class="text-base font-bold text-white">Criação Instantânea de Testes</h3>
+            <p class="text-xs text-slate-400 mt-2.5 leading-relaxed">
+              Gere credenciais de teste em 1 único clique com formatos prontos para WhatsApp: dados de acesso, links M3U Plus e instruções para os principais aplicativos (IBO Player, XCIPTV, Smarters Pro).
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-white/[0.06] text-[11px] font-mono text-emerald-400">
+            DISPARO VIA WHATSAPP EM 1 CLIQUE
+          </div>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="b2b-card rounded-2xl p-7 flex flex-col justify-between">
+          <div>
+            <div class="w-12 h-12 rounded-xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center text-purple-400 mb-5">
+              <i data-lucide="network" class="w-6 h-6"></i>
+            </div>
+            <h3 class="text-base font-bold text-white">Rede Hierárquica de Revendas</h3>
+            <p class="text-xs text-slate-400 mt-2.5 leading-relaxed">
+              Estruture sua operação em multinível: Painel Master, Revendedores Diretos e Sub-Revendas. Controle de saldo de créditos, limites de corte e extrato financeiro detalhado por usuário.
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-white/[0.06] text-[11px] font-mono text-purple-400">
+            AUDITORIA COMPLETA DE CRÉDITOS
+          </div>
+        </div>
+
+        <!-- Card 5 -->
+        <div class="b2b-card rounded-2xl p-7 flex flex-col justify-between">
+          <div>
+            <div class="w-12 h-12 rounded-xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center text-cyan-400 mb-5">
+              <i data-lucide="activity" class="w-6 h-6"></i>
+            </div>
+            <h3 class="text-base font-bold text-white">Monitoramento de Conexões Vivas</h3>
+            <p class="text-xs text-slate-400 mt-2.5 leading-relaxed">
+              Visualize quem está conectado no momento, canal assistido, endereço de IP, user-agent e tempo de sessão ativo. Identifique abusos ou compartilhamento indevido de conexões instantaneamente.
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-white/[0.06] text-[11px] font-mono text-cyan-400">
+            TELEMETRIA AO VIVO POR CLIENTE
+          </div>
+        </div>
+
+        <!-- Card 6 -->
+        <div class="b2b-card rounded-2xl p-7 flex flex-col justify-between">
+          <div>
+            <div class="w-12 h-12 rounded-xl bg-rose-500/10 border border-rose-500/20 flex items-center justify-center text-rose-400 mb-5">
+              <i data-lucide="archive" class="w-6 h-6"></i>
+            </div>
+            <h3 class="text-base font-bold text-white">Lixeira de Segurança & Recuperação</h3>
+            <p class="text-xs text-slate-400 mt-2.5 leading-relaxed">
+              Mecanismo corporativo de proteção contra exclusões acidentais. Clientes excluídos permanecem em quarentena segura e podem ser restaurados com 1 toque com todas as suas configurações salvas.
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-white/[0.06] text-[11px] font-mono text-rose-400">
+            ZERO RISCO DE PERDA DE DADOS
+          </div>
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- ==========================================
+         SIMULADOR FINANCEIRO / ROI CORPORATIVO
+         ========================================== -->
+    <section id="roi" class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16 border-t border-white/[0.08]">
+      
+      <div class="text-center max-w-2xl mx-auto mb-12">
+        <span class="text-xs font-mono font-bold text-[#009EF7] uppercase tracking-wider">PROJEÇÃO DE NEGÓCIO</span>
+        <h2 class="text-2xl sm:text-4xl font-extrabold text-white mt-1.5 tracking-tight">
+          Simulador de Viabilidade Financeira
+        </h2>
+        <p class="text-slate-400 text-sm mt-2">
+          Calcule a receita recorrente da sua base de assinantes e a margem de lucro líquido mensal.
+        </p>
+      </div>
+
+      <div class="b2b-card rounded-3xl p-6 sm:p-10 border border-white/10 shadow-2xl">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          
+          <!-- Controles do Simulador (7 colunas) -->
+          <div class="lg:col-span-7 space-y-7">
+            
+            <!-- Controle 1: Base de Clientes -->
             <div>
-              <div class="flex justify-between items-center text-sm font-semibold text-white mb-2">
-                <span>Clientes Ativos</span>
-                <span id="slider-clients-val" class="text-base font-bold text-[#009EF7]">150 clientes</span>
+              <div class="flex justify-between items-center text-sm font-bold text-white mb-2">
+                <span class="flex items-center gap-2">
+                  <i data-lucide="users" class="w-4 h-4 text-[#009EF7]"></i>
+                  Base de Clientes Ativos
+                </span>
+                <span id="slider-clients-val" class="font-mono text-base font-extrabold text-[#009EF7]">250 clientes</span>
               </div>
               <input 
                 id="slider-clients" 
                 type="range" 
-                min="20" 
-                max="1000" 
+                min="30" 
+                max="1500" 
                 step="10" 
-                value="150" 
+                value="250" 
                 class="w-full cursor-pointer"
-                oninput="updateCalculator()"
+                oninput="calcROI()"
               >
-              <div class="flex justify-between text-[11px] text-slate-500 mt-1">
-                <span>20</span>
+              <div class="flex justify-between text-[11px] font-mono text-slate-500 mt-1.5">
+                <span>30 assinantes</span>
                 <span>500</span>
-                <span>1.000+</span>
+                <span>1.000</span>
+                <span>1.500+</span>
               </div>
             </div>
 
-            <!-- Slider Mensalidade Média -->
+            <!-- Controle 2: Ticket Médio -->
             <div>
-              <div class="flex justify-between items-center text-sm font-semibold text-white mb-2">
-                <span>Mensalidade Cobrada por Cliente</span>
-                <span id="slider-price-val" class="text-base font-bold text-[#009EF7]">R$ 35,00</span>
+              <div class="flex justify-between items-center text-sm font-bold text-white mb-2">
+                <span class="flex items-center gap-2">
+                  <i data-lucide="dollar-sign" class="w-4 h-4 text-emerald-400"></i>
+                  Mensalidade Cobrada por Cliente (Ticket Médio)
+                </span>
+                <span id="slider-price-val" class="font-mono text-base font-extrabold text-emerald-400">R$ 35,00</span>
               </div>
               <input 
                 id="slider-price" 
                 type="range" 
                 min="20" 
-                max="60" 
+                max="65" 
                 step="5" 
                 value="35" 
                 class="w-full cursor-pointer"
-                oninput="updateCalculator()"
+                oninput="calcROI()"
               >
-              <div class="flex justify-between text-[11px] text-slate-500 mt-1">
-                <span>R$ 20</span>
-                <span>R$ 35</span>
-                <span>R$ 60</span>
+              <div class="flex justify-between text-[11px] font-mono text-slate-500 mt-1.5">
+                <span>R$ 20,00</span>
+                <span>R$ 35,00</span>
+                <span>R$ 50,00</span>
+                <span>R$ 65,00</span>
               </div>
             </div>
 
-            <p class="text-[11px] text-slate-400 italic">
-              * Estimativa com custo médio de créditos deduzido automaticamente.
-            </p>
+            <div class="rounded-xl bg-[#080b12] border border-white/5 p-4 text-xs text-slate-400 leading-relaxed flex items-start gap-3">
+              <i data-lucide="info" class="w-4 h-4 text-[#009EF7] shrink-0 mt-0.5"></i>
+              <span>O simulador desconta automaticamente o custo médio operacional de créditos e infraestrutura em escala de volume.</span>
+            </div>
 
           </div>
 
-          <!-- Display de Resultados -->
-          <div class="rounded-xl bg-[#07090e] border border-white/10 p-6 flex flex-col justify-center space-y-4">
+          <!-- Display de Resultados Financeiros (5 colunas) -->
+          <div class="lg:col-span-5 rounded-2xl bg-[#07090e] border border-white/10 p-6 sm:p-7 flex flex-col justify-between space-y-6">
             
-            <div class="border-b border-white/10 pb-3">
-              <span class="text-xs text-slate-400 font-medium">Faturamento Bruto Mensal</span>
-              <p id="calc-gross" class="text-2xl font-extrabold text-white mt-1">R$ 5.250,00</p>
-            </div>
+            <div class="space-y-4">
+              <div>
+                <span class="text-[11px] font-mono uppercase tracking-wider text-slate-400">Faturamento Bruto Recorrente</span>
+                <p id="roi-gross" class="text-2xl font-black text-white font-mono mt-1">R$ 8.750,00</p>
+              </div>
 
-            <div class="border-b border-white/10 pb-3">
-              <span class="text-xs text-slate-400 font-medium">Custo Estimado de Créditos</span>
-              <p id="calc-cost" class="text-sm font-semibold text-slate-400 mt-0.5">R$ 1.200,00</p>
-            </div>
+              <div class="border-t border-white/[0.06] pt-3">
+                <span class="text-[11px] font-mono uppercase tracking-wider text-slate-400">Custo Operacional Estimado</span>
+                <p id="roi-cost" class="text-sm font-bold text-slate-400 font-mono mt-0.5">R$ 1.875,00</p>
+              </div>
 
-            <div class="pt-1">
-              <span class="text-xs text-emerald-400 font-bold uppercase tracking-wider">Lucro Líquido Estimado</span>
-              <p id="calc-net" class="text-3xl sm:text-4xl font-black text-emerald-400 mt-1">R$ 4.050,00<span class="text-sm font-normal text-slate-400">/mês</span></p>
+              <div class="border-t border-white/[0.06] pt-3">
+                <span class="text-xs font-mono uppercase tracking-wider text-emerald-400 font-bold">Lucro Líquido Projetado</span>
+                <p id="roi-net" class="text-3xl sm:text-4xl font-black text-emerald-400 font-mono mt-1">
+                  R$ 6.875,00<span class="text-xs font-normal text-slate-400 font-sans">/mês</span>
+                </p>
+                <p id="roi-annual" class="text-xs text-slate-400 font-mono mt-1">
+                  Projeção Anual: <strong class="text-white">R$ 82.500,00</strong>
+                </p>
+              </div>
             </div>
 
             <a 
               href="#contato" 
-              class="w-full mt-2 inline-flex items-center justify-center gap-2 py-3 rounded-xl text-xs font-bold bg-[#009EF7] hover:bg-[#0086D1] text-white shadow-lg transition-all"
+              class="w-full inline-flex items-center justify-center gap-2 py-3.5 rounded-xl text-xs font-bold bg-[#009EF7] hover:bg-[#0086D1] text-white shadow-lg transition-all"
             >
-              <span>Começar a Lucrar Agora</span>
+              <span>Implantar Painel para Minha Operação</span>
               <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
             </a>
 
           </div>
 
         </div>
+      </div>
+
+    </section>
+
+    <!-- ==========================================
+         PLANOS CORPORATIVOS & FRONTEIRAS
+         ========================================== -->
+    <section id="planos" class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 border-t border-white/[0.08]">
+      
+      <div class="text-center max-w-3xl mx-auto mb-14">
+        <span class="text-xs font-mono font-bold text-[#009EF7] uppercase tracking-wider">CONTRATAÇÃO & ESCALA</span>
+        <h2 class="text-2xl sm:text-4xl font-extrabold text-white mt-1.5 tracking-tight">
+          Planos Estruturados para o Seu Momento
+        </h2>
+        <p class="text-slate-400 text-sm mt-2">
+          Sem taxas ocultas. Ativação imediata da sua estrutura com suporte técnico direto.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
+        
+        <!-- Plano 1: Start Revenda -->
+        <div class="b2b-card rounded-2xl p-7 flex flex-col justify-between">
+          <div>
+            <div class="text-xs font-mono font-bold text-slate-400 uppercase">Plano Revenda Start</div>
+            <h3 class="text-xl font-bold text-white mt-1">Painel Operacional</h3>
+            <p class="text-xs text-slate-400 mt-2">Ideal para operadores iniciando sua carteira de assinantes.</p>
+
+            <div class="mt-6 pb-6 border-b border-white/[0.06]">
+              <span class="text-3xl font-extrabold text-white font-mono">Consulte</span>
+              <span class="text-xs text-slate-400 block mt-1">Recarga flexível por créditos</span>
+            </div>
+
+            <ul class="mt-6 space-y-3 text-xs text-slate-300">
+              <li class="flex items-center gap-2.5">
+                <i data-lucide="check" class="w-4 h-4 text-[#009EF7]"></i>
+                <span>Acesso completo ao Console Sigma Pro</span>
+              </li>
+              <li class="flex items-center gap-2.5">
+                <i data-lucide="check" class="w-4 h-4 text-[#009EF7]"></i>
+                <span>Criação ilimitada de testes rápidos</span>
+              </li>
+              <li class="flex items-center gap-2.5">
+                <i data-lucide="check" class="w-4 h-4 text-[#009EF7]"></i>
+                <span>Lixeira de segurança para clientes</span>
+              </li>
+              <li class="flex items-center gap-2.5">
+                <i data-lucide="check" class="w-4 h-4 text-[#009EF7]"></i>
+                <span>Suporte técnico prioritário via WhatsApp</span>
+              </li>
+            </ul>
+          </div>
+
+          <a 
+            href="#contato" 
+            class="mt-8 w-full inline-flex items-center justify-center gap-2 py-3 rounded-xl text-xs font-bold bg-white/5 hover:bg-white/10 text-white border border-white/10 transition-all"
+          >
+            <span>Iniciar como Revendedor</span>
+          </a>
+        </div>
+
+        <!-- Plano 2: Master White Label (Destaque) -->
+        <div class="b2b-card rounded-2xl p-7 flex flex-col justify-between border-[#009EF7] relative ring-1 ring-[#009EF7] shadow-2xl bg-[#0d121c]">
+          <div class="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-[#009EF7] text-white px-3.5 py-0.5 rounded-full text-[10px] font-mono font-bold tracking-wider uppercase">
+            Mais Escolhido
+          </div>
+
+          <div>
+            <div class="text-xs font-mono font-bold text-[#009EF7] uppercase">Franquia Master White Label</div>
+            <h3 class="text-xl font-bold text-white mt-1">Sua Marca & Domínio</h3>
+            <p class="text-xs text-slate-400 mt-2">Para quem deseja autoridade e rede própria de revendedores.</p>
+
+            <div class="mt-6 pb-6 border-b border-white/[0.08]">
+              <span class="text-3xl font-extrabold text-white font-mono">Consulte</span>
+              <span class="text-xs text-slate-400 block mt-1">Configuração White Label Completa</span>
+            </div>
+
+            <ul class="mt-6 space-y-3 text-xs text-slate-200">
+              <li class="flex items-center gap-2.5">
+                <i data-lucide="check" class="w-4 h-4 text-[#009EF7]"></i>
+                <span><strong>100% White Label:</strong> seu logo, nome e cores</span>
+              </li>
+              <li class="flex items-center gap-2.5">
+                <i data-lucide="check" class="w-4 h-4 text-[#009EF7]"></i>
+                <span><strong>Domínio próprio</strong> com SSL automático</span>
+              </li>
+              <li class="flex items-center gap-2.5">
+                <i data-lucide="check" class="w-4 h-4 text-[#009EF7]"></i>
+                <span>Criação e gestão de Sub-Revendedores</span>
+              </li>
+              <li class="flex items-center gap-2.5">
+                <i data-lucide="check" class="w-4 h-4 text-[#009EF7]"></i>
+                <span>Multi-Tema (Sigma Pro + Xtream Clássico)</span>
+              </li>
+              <li class="flex items-center gap-2.5">
+                <i data-lucide="check" class="w-4 h-4 text-[#009EF7]"></i>
+                <span>Painel de avisos gerais para revendas</span>
+              </li>
+            </ul>
+          </div>
+
+          <a 
+            href="#contato" 
+            class="mt-8 w-full inline-flex items-center justify-center gap-2 py-3.5 rounded-xl text-xs font-bold bg-[#009EF7] hover:bg-[#0086D1] text-white shadow-xl shadow-[#009EF7]/30 transition-all hover:scale-[1.02]"
+          >
+            <span>Quero Meu Painel White Label</span>
+          </a>
+        </div>
+
+        <!-- Plano 3: Enterprise Infra Dedicada -->
+        <div class="b2b-card rounded-2xl p-7 flex flex-col justify-between">
+          <div>
+            <div class="text-xs font-mono font-bold text-purple-400 uppercase">Operação Dedicada</div>
+            <h3 class="text-xl font-bold text-white mt-1">Infraestrutura Enterprise</h3>
+            <p class="text-xs text-slate-400 mt-2">Para grandes servidores e carteiras acima de 1.000 clientes.</p>
+
+            <div class="mt-6 pb-6 border-b border-white/[0.06]">
+              <span class="text-3xl font-extrabold text-white font-mono">Custom</span>
+              <span class="text-xs text-slate-400 block mt-1">Servidores dedicados e CDN privada</span>
+            </div>
+
+            <ul class="mt-6 space-y-3 text-xs text-slate-300">
+              <li class="flex items-center gap-2.5">
+                <i data-lucide="check" class="w-4 h-4 text-purple-400"></i>
+                <span>Instância isolada de banco de dados</span>
+              </li>
+              <li class="flex items-center gap-2.5">
+                <i data-lucide="check" class="w-4 h-4 text-purple-400"></i>
+                <span>Edge FastCDN exclusivo para sua marca</span>
+              </li>
+              <li class="flex items-center gap-2.5">
+                <i data-lucide="check" class="w-4 h-4 text-purple-400"></i>
+                <span>Integrações via API REST sob medida</span>
+              </li>
+              <li class="flex items-center gap-2.5">
+                <i data-lucide="check" class="w-4 h-4 text-purple-400"></i>
+                <span>Gerente de contas e SLA de 15 minutos</span>
+              </li>
+            </ul>
+          </div>
+
+          <a 
+            href="#contato" 
+            class="mt-8 w-full inline-flex items-center justify-center gap-2 py-3 rounded-xl text-xs font-bold bg-white/5 hover:bg-white/10 text-white border border-white/10 transition-all"
+          >
+            <span>Falar com Engenharia Comercial</span>
+          </a>
+        </div>
 
       </div>
 
     </section>
 
     <!-- ==========================================
-         CALLOUT DO PAINEL DEMO
+         CALLOUT OFICIAL DO AMBIENTE DEMO
          ========================================== -->
     <section class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-      <div class="relative rounded-3xl p-8 sm:p-12 overflow-hidden bg-gradient-to-r from-[#009EF7]/20 via-[#7239EA]/15 to-transparent border border-[#009EF7]/30 shadow-2xl flex flex-col md:flex-row items-center justify-between gap-8">
+      <div class="rounded-3xl p-8 sm:p-12 bg-gradient-to-r from-[#009EF7]/15 via-[#0b101a] to-[#07090e] border border-[#009EF7]/30 shadow-2xl flex flex-col md:flex-row items-center justify-between gap-8">
         
         <div class="max-w-xl text-center md:text-left">
-          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-bold mb-4">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-mono font-semibold mb-3">
             <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-            <span>DEMO ABERTO · SEM CADASTRO NECESSÁRIO</span>
+            <span>ACESSO PÚBLICO LIBERADO</span>
           </div>
-          <h2 class="text-2xl sm:text-3xl font-extrabold text-white">
-            Experimente o Painel ao Vivo Agora Mesmo
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
+            Valide a Tecnologia no Ambiente Demo
           </h2>
-          <p class="text-slate-300 text-sm mt-3 leading-relaxed">
-            Acesse nosso painel de demonstração oficial, navegue pelos clientes, personalize as cores e sinta a velocidade na prática antes de tomar qualquer decisão.
+          <p class="text-slate-300 text-xs sm:text-sm mt-2 leading-relaxed">
+            Experimente a velocidade da API, navegue pelas configurações de marca e comprove a fluidez do sistema antes de qualquer investimento.
           </p>
         </div>
 
@@ -644,68 +900,66 @@
           href="https://demo.sigmast.site" 
           target="_blank" 
           rel="noopener noreferrer" 
-          class="shrink-0 inline-flex items-center gap-3 px-8 py-4 rounded-2xl text-sm font-bold bg-white text-[#07090e] hover:bg-slate-100 shadow-2xl transition-all hover:scale-105"
+          class="shrink-0 inline-flex items-center gap-2.5 px-8 py-4 rounded-xl text-xs font-bold bg-white text-[#07090e] hover:bg-slate-100 shadow-xl transition-all hover:scale-105"
         >
-          <i data-lucide="external-link" class="w-4 h-4 text-[#009EF7]"></i>
-          <span>Acessar Painel Demo</span>
+          <i data-lucide="play" class="w-4 h-4 text-[#009EF7] fill-current"></i>
+          <span>Explorar Demo Agora (demo.sigmast.site)</span>
         </a>
 
       </div>
     </section>
 
     <!-- ==========================================
-         FAQ (PERGUNTAS FREQUENTES)
+         GOVERNANÇA & FAQ CORPORATIVO
          ========================================== -->
-    <section id="faq" class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16 border-t border-white/[0.06]">
+    <section id="faq" class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16 border-t border-white/[0.08]">
       
-      <div class="text-center mb-12">
-        <span class="text-xs font-bold uppercase tracking-widest text-[#009EF7]">Tire Suas Dúvidas</span>
-        <h2 class="text-2xl sm:text-4xl font-extrabold text-white mt-1">Perguntas Frequentes</h2>
+      <div class="text-center max-w-2xl mx-auto mb-12">
+        <span class="text-xs font-mono font-bold text-[#009EF7] uppercase tracking-wider">DÚVIDAS & CONFORMIDADE</span>
+        <h2 class="text-2xl sm:text-4xl font-extrabold text-white mt-1.5 tracking-tight">
+          Perguntas Frequentes de Operadores
+        </h2>
       </div>
 
       <div class="space-y-4">
         
-        <!-- FAQ 1 -->
-        <details class="glass-card rounded-xl p-5 border border-white/10 group cursor-pointer">
+        <details class="b2b-card rounded-xl p-5 border border-white/10 group cursor-pointer">
           <summary class="flex justify-between items-center text-sm font-bold text-white list-none">
-            <span>O que é a tecnologia Multi-Tema (Sigma Pro e Xtream)?</span>
+            <span>Qual a infraestrutura por trás do sistema e qual o SLA de disponibilidade?</span>
             <i data-lucide="chevron-down" class="w-4 h-4 text-slate-400 group-open:rotate-180 transition-transform"></i>
           </summary>
           <p class="mt-3 text-xs text-slate-400 leading-relaxed">
-            Você pode alternar entre o design ultra moderno Sigma Pro (com cards executivos e paleta escura) ou o formato consagrado Xtream Clássico (com status do servidor online e acordeões tradicionais) a qualquer instante, sem reiniciar ou perder nenhuma configuração.
+            Nossa plataforma opera sobre nós distribuídos em datacenters Tier III com redundância automática de instâncias (Master e Réplica) e proteção contra sobrecarga. O SLA contratual de disponibilidade é de 99.98% ao mês.
           </p>
         </details>
 
-        <!-- FAQ 2 -->
-        <details class="glass-card rounded-xl p-5 border border-white/10 group cursor-pointer">
+        <details class="b2b-card rounded-xl p-5 border border-white/10 group cursor-pointer">
           <summary class="flex justify-between items-center text-sm font-bold text-white list-none">
-            <span>Posso usar meu próprio logotipo e domínio com SSL?</span>
+            <span>Como funciona a personalização de Domínio Próprio e SSL?</span>
             <i data-lucide="chevron-down" class="w-4 h-4 text-slate-400 group-open:rotate-180 transition-transform"></i>
           </summary>
           <p class="mt-3 text-xs text-slate-400 leading-relaxed">
-            Sim! O sistema é 100% White Label. Você insere seu logotipo, nome do painel, cores e vincula seu domínio próprio (ex: painel.suamarca.com) com certificado SSL emitido e renovado de forma totalmente automática.
+            Você aponta o seu domínio ou subdomínio (exemplo: painel.suamarca.com) para nossa infraestrutura através de um registro CNAME simples. Nosso cluster emite o certificado SSL (HTTPS) de forma automática em menos de 10 minutos.
           </p>
         </details>
 
-        <!-- FAQ 3 -->
-        <details class="glass-card rounded-xl p-5 border border-white/10 group cursor-pointer">
+        <details class="b2b-card rounded-xl p-5 border border-white/10 group cursor-pointer">
           <summary class="flex justify-between items-center text-sm font-bold text-white list-none">
-            <span>O painel funciona bem em celulares e tablets?</span>
+            <span>Posso migrar meus clientes atuais de outros painéis sem perda de dados?</span>
             <i data-lucide="chevron-down" class="w-4 h-4 text-slate-400 group-open:rotate-180 transition-transform"></i>
           </summary>
           <p class="mt-3 text-xs text-slate-400 leading-relaxed">
-            Com certeza. Toda a interface foi desenhada com abordagem Mobile-First. Você cria testes, renova clientes e envia links diretamente pelo celular sem nenhuma dificuldade.
+            Sim. A plataforma possui total compatibilidade com o padrão de credenciais Xtream Codes API. Disponibilizamos suporte técnico guiado para realizar a importação ou sincronização assistida da sua base de clientes sem interrupção para o usuário final.
           </p>
         </details>
 
-        <!-- FAQ 4 -->
-        <details class="glass-card rounded-xl p-5 border border-white/10 group cursor-pointer">
+        <details class="b2b-card rounded-xl p-5 border border-white/10 group cursor-pointer">
           <summary class="flex justify-between items-center text-sm font-bold text-white list-none">
-            <span>Como faço para contratar e começar a operar?</span>
+            <span>Qual o tempo de ativação após a solicitação?</span>
             <i data-lucide="chevron-down" class="w-4 h-4 text-slate-400 group-open:rotate-180 transition-transform"></i>
           </summary>
           <p class="mt-3 text-xs text-slate-400 leading-relaxed">
-            Basta clicar no botão de contato abaixo para falar diretamente com nosso atendimento no WhatsApp. A liberação do seu painel com sua marca e domínio é feita de maneira rápida e descomplicada.
+            A ativação do acesso padrão ao painel ocorre em minutos. Para configurações White Label completas com domínio personalizado e identidade visual, o processo é concluído e homologado em menos de 2 horas.
           </p>
         </details>
 
@@ -714,41 +968,41 @@
     </section>
 
     <!-- ==========================================
-         SEÇÃO DE CONTATO / CTA FINAL
+         SEÇÃO DE CONTATO / ATENDIMENTO CORPORATIVO
          ========================================== -->
-    <section id="contato" class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20 border-t border-white/[0.06] text-center">
+    <section id="contato" class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20 border-t border-white/[0.08] text-center">
       
-      <div class="glass-card rounded-3xl p-8 sm:p-14 border border-white/10 relative overflow-hidden shadow-2xl">
+      <div class="b2b-card rounded-3xl p-8 sm:p-14 border border-white/10 relative overflow-hidden shadow-2xl">
         <div class="absolute inset-0 bg-gradient-to-b from-[#009EF7]/10 via-transparent to-transparent pointer-events-none"></div>
 
-        <span class="text-xs font-bold uppercase tracking-widest text-[#009EF7]">Atendimento Imediato</span>
+        <span class="text-xs font-mono font-bold uppercase tracking-wider text-[#009EF7]">ATENDIMENTO DIRETO</span>
         <h2 class="text-3xl sm:text-5xl font-extrabold text-white mt-2 tracking-tight">
-          Pronto para Elevar o Nível da sua Gestão?
+          Pronto para Estruturar sua Operação?
         </h2>
         <p class="text-slate-400 text-sm sm:text-base mt-4 max-w-xl mx-auto leading-relaxed">
-          Entre em contato conosco agora mesmo e garanta sua estrutura completa com suporte prioritário e liberação rápida.
+          Converse diretamente com nosso time comercial no WhatsApp para tirar dúvidas sobre volumes de créditos, condições de implantação White Label e ativação imediata.
         </p>
 
-        <div class="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
+        <div class="mt-9 flex flex-col sm:flex-row items-center justify-center gap-4">
           <a 
             id="whatsapp-cta-link"
-            href="https://wa.me/?text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20o%20Painel%20IPTV%20Sigma%20Pro." 
+            href="https://wa.me/?text=Ol%C3%A1!%20Tenho%20interesse%20em%20conhecer%20os%20planos%20e%20implantar%20o%20Painel%20Sigma%20Enterprise." 
             target="_blank" 
             rel="noopener noreferrer"
-            class="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-xl text-sm font-bold bg-emerald-500 hover:bg-emerald-600 text-white shadow-xl shadow-emerald-500/25 transition-all hover:-translate-y-0.5"
+            class="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-xl text-xs font-bold bg-emerald-500 hover:bg-emerald-600 text-white shadow-xl shadow-emerald-500/20 transition-all hover:-translate-y-0.5"
           >
-            <i data-lucide="message-circle" class="w-5 h-5 fill-current"></i>
-            <span>Conversar no WhatsApp</span>
+            <i data-lucide="message-circle" class="w-4 h-4 fill-current"></i>
+            <span>Iniciar Conversa no WhatsApp</span>
           </a>
 
           <a 
             href="https://demo.sigmast.site" 
             target="_blank" 
             rel="noopener noreferrer"
-            class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-4 rounded-xl text-sm font-semibold bg-white/5 hover:bg-white/10 text-white border border-white/10 hover:border-white/20 transition-all"
+            class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-4 rounded-xl text-xs font-semibold bg-white/5 hover:bg-white/10 text-slate-200 border border-white/10 hover:border-white/20 transition-all"
           >
             <i data-lucide="external-link" class="w-4 h-4 text-[#009EF7]"></i>
-            <span>Ver Painel Demo</span>
+            <span>Ambiente Demo ao Vivo</span>
           </a>
         </div>
 
@@ -759,25 +1013,66 @@
   </main>
 
   <!-- ==========================================
-       FOOTER MINIMALISTA
+       FOOTER CORPORATIVO
        ========================================== -->
-  <footer class="border-t border-white/[0.06] bg-[#05070a] py-10 relative z-10">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
+  <footer class="border-t border-white/[0.08] bg-[#05070b] py-12 relative z-10 text-xs text-slate-500">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       
-      <div class="flex items-center gap-2">
-        <div class="w-6 h-6 rounded-lg bg-[#009EF7] flex items-center justify-center text-white text-[10px] font-bold">▶</div>
-        <span class="font-bold text-slate-300">SIGMA PRO IPTV</span>
-        <span>— Plataforma de Gestão White Label</span>
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8 pb-10 border-b border-white/[0.06]">
+        
+        <!-- Coluna 1: Empresa -->
+        <div class="space-y-3">
+          <div class="flex items-center gap-2 text-white font-extrabold text-sm">
+            <span class="text-[#009EF7]">SIGMA</span> ENTERPRISE
+          </div>
+          <p class="text-xs text-slate-400 leading-relaxed">
+            Plataforma corporativa de alta performance para operadoras, revendas e franquias de streaming.
+          </p>
+          <div class="pt-2 text-[11px] font-mono text-slate-500">
+            SLA Garantido · FastCDN Engine
+          </div>
+        </div>
+
+        <!-- Coluna 2: Soluções -->
+        <div class="space-y-2">
+          <p class="text-xs font-bold text-white uppercase tracking-wider font-mono">Soluções</p>
+          <ul class="space-y-1.5 text-xs text-slate-400">
+            <li><a href="#console-showcase" class="hover:text-white transition-colors">Console Sigma Pro</a></li>
+            <li><a href="#console-showcase" class="hover:text-white transition-colors">Console Xtream Clássico</a></li>
+            <li><a href="#plataforma" class="hover:text-white transition-colors">White Label Completo</a></li>
+            <li><a href="#plataforma" class="hover:text-white transition-colors">Rede de Sub-Revendas</a></li>
+          </ul>
+        </div>
+
+        <!-- Coluna 3: Infraestrutura -->
+        <div class="space-y-2">
+          <p class="text-xs font-bold text-white uppercase tracking-wider font-mono">Infraestrutura</p>
+          <ul class="space-y-1.5 text-xs text-slate-400">
+            <li><span class="text-slate-400">FastCDN Multi-Edge</span></li>
+            <li><span class="text-slate-400">Compatibilidade Xtream Codes API v2</span></li>
+            <li><span class="text-slate-400">Replicação Master/Réplica</span></li>
+            <li><span class="text-slate-400">Certificados SSL Automatizados</span></li>
+          </ul>
+        </div>
+
+        <!-- Coluna 4: Acesso & Demonstração -->
+        <div class="space-y-2">
+          <p class="text-xs font-bold text-white uppercase tracking-wider font-mono">Acesso Direto</p>
+          <ul class="space-y-1.5 text-xs text-slate-400">
+            <li><a href="https://demo.sigmast.site" target="_blank" class="hover:text-white transition-colors flex items-center gap-1">Painel Demonstração <i data-lucide="external-link" class="w-3 h-3"></i></a></li>
+            <li><a href="#roi" class="hover:text-white transition-colors">Simulador de ROI</a></li>
+            <li><a href="#planos" class="hover:text-white transition-colors">Planos de Franquia</a></li>
+            <li><a href="#contato" class="hover:text-white transition-colors">Suporte Comercial WhatsApp</a></li>
+          </ul>
+        </div>
+
       </div>
 
-      <div class="flex items-center gap-6">
-        <a href="#temas" class="hover:text-slate-300 transition-colors">Temas</a>
-        <a href="#recursos" class="hover:text-slate-300 transition-colors">Recursos</a>
-        <a href="https://demo.sigmast.site" target="_blank" class="hover:text-slate-300 transition-colors">Demo</a>
-        <a href="#contato" class="hover:text-slate-300 transition-colors">Suporte</a>
+      <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px] text-slate-500">
+        <p>© 2026 Sigma Enterprise Platform. Todos os direitos reservados.</p>
+        <p class="font-mono text-slate-600">Enterprise High-Availability Cluster · Secure 256-bit Encryption</p>
       </div>
 
-      <p>© 2026 Todos os direitos reservados.</p>
     </div>
   </footer>
 
@@ -785,55 +1080,49 @@
        SCRIPTS INTERATIVOS
        ========================================== -->
   <script>
-    // Inicializar ícones Lucide
+    // Inicializar ícones
     lucide.createIcons();
 
-    // Troca interativa de abas do mockup
-    function switchThemeTab(theme) {
+    // Alternância do Mockup do Console
+    function switchConsoleTheme(mode) {
       const btnSigma = document.getElementById('tab-btn-sigma');
       const btnXtream = document.getElementById('tab-btn-xtream');
       const imgSigma = document.getElementById('img-sigma');
       const imgXtream = document.getElementById('img-xtream');
-      const activeDot = document.getElementById('active-theme-dot');
-      const activeName = document.getElementById('active-theme-name');
-      const activeSub = document.getElementById('active-theme-sub');
-      const mockupUrl = document.getElementById('mockup-url');
+      const title = document.getElementById('console-mode-title');
+      const desc = document.getElementById('console-mode-desc');
+      const url = document.getElementById('console-url');
+      const icon = document.getElementById('console-badge-icon');
 
-      if (theme === 'sigma') {
-        // Estilo botão Sigma
-        btnSigma.className = 'flex-1 sm:flex-none flex items-center justify-center gap-2 px-4 py-2 rounded-lg text-xs font-bold transition-all bg-[#009EF7] text-white shadow-md shadow-[#009EF7]/30';
-        btnXtream.className = 'flex-1 sm:flex-none flex items-center justify-center gap-2 px-4 py-2 rounded-lg text-xs font-bold transition-all text-slate-400 hover:text-white hover:bg-white/5';
+      if (mode === 'sigma') {
+        btnSigma.className = 'flex items-center gap-2 px-5 py-2.5 rounded-lg text-xs font-bold transition-all bg-[#009EF7] text-white shadow-md shadow-[#009EF7]/20';
+        btnXtream.className = 'flex items-center gap-2 px-5 py-2.5 rounded-lg text-xs font-bold transition-all text-slate-400 hover:text-white hover:bg-white/5';
         
-        // Imagens
         imgSigma.classList.remove('hidden');
         imgXtream.classList.add('hidden');
 
-        // Textos
-        activeDot.className = 'w-2.5 h-2.5 rounded-full bg-[#009EF7]';
-        activeName.innerText = 'Tema Ativo: Sigma Pro';
-        activeSub.innerText = 'Cards métricos em tempo real, paleta escura profunda e alta legibilidade';
-        mockupUrl.innerText = 'https://demo.sigmast.site/#/dashboard';
+        title.innerText = 'Modelo Ativo: Sigma Pro v2.5';
+        desc.innerText = 'Cockpit executivo com cartões de telemetria (Clientes, Testes Ativos, Expirados, Conexões ao Vivo e Revendas) em grid de alta densidade.';
+        url.innerText = 'https://demo.sigmast.site/#/dashboard';
+        icon.className = 'w-9 h-9 rounded-lg bg-[#009EF7]/15 border border-[#009EF7]/30 flex items-center justify-center text-[#009EF7] shrink-0 mt-0.5';
       } else {
-        // Estilo botão Xtream
-        btnXtream.className = 'flex-1 sm:flex-none flex items-center justify-center gap-2 px-4 py-2 rounded-lg text-xs font-bold transition-all bg-cyan-500 text-white shadow-md shadow-cyan-500/30';
-        btnSigma.className = 'flex-1 sm:flex-none flex items-center justify-center gap-2 px-4 py-2 rounded-lg text-xs font-bold transition-all text-slate-400 hover:text-white hover:bg-white/5';
+        btnXtream.className = 'flex items-center gap-2 px-5 py-2.5 rounded-lg text-xs font-bold transition-all bg-cyan-600 text-white shadow-md shadow-cyan-600/20';
+        btnSigma.className = 'flex items-center gap-2 px-5 py-2.5 rounded-lg text-xs font-bold transition-all text-slate-400 hover:text-white hover:bg-white/5';
 
-        // Imagens
         imgXtream.classList.remove('hidden');
         imgSigma.classList.add('hidden');
 
-        // Textos
-        activeDot.className = 'w-2.5 h-2.5 rounded-full bg-cyan-400';
-        activeName.innerText = 'Tema Ativo: Xtream Clássico';
-        activeSub.innerText = 'Status de servidor online, visual tradicional e pastas de fácil visualização';
-        mockupUrl.innerText = 'https://demo.sigmast.site/#/dashboard?theme=xtream';
+        title.innerText = 'Modelo Ativo: Xtream Enterprise';
+        desc.innerText = 'Layout tradicional consagrado com telemetria do Servidor Principal Online, filtros dinâmicos de conexões e pastas retráteis.';
+        url.innerText = 'https://demo.sigmast.site/#/dashboard?theme=xtream';
+        icon.className = 'w-9 h-9 rounded-lg bg-cyan-500/15 border border-cyan-500/30 flex items-center justify-center text-cyan-400 shrink-0 mt-0.5';
       }
 
       lucide.createIcons();
     }
 
-    // Calculadora / Simulador de Faturamento
-    function updateCalculator() {
+    // Calculadora ROI Corporativo
+    function calcROI() {
       const clients = parseInt(document.getElementById('slider-clients').value);
       const price = parseFloat(document.getElementById('slider-price').value);
 
@@ -843,20 +1132,23 @@
       // Faturamento Bruto
       const gross = clients * price;
 
-      // Custo de créditos estimado (escalonado, média de R$ 8 por crédito)
-      const costPerCredit = clients > 300 ? 7.0 : 8.0;
-      const totalCost = clients * costPerCredit;
+      // Custo de escala operacional (desconto regressivo por volume)
+      let costPerUser = 7.5;
+      if (clients > 300) costPerUser = 7.0;
+      if (clients > 700) costPerUser = 6.5;
 
-      // Lucro Líquido
+      const totalCost = clients * costPerUser;
       const net = Math.max(0, gross - totalCost);
+      const annual = net * 12;
 
-      document.getElementById('calc-gross').innerText = `R$ ${gross.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}`;
-      document.getElementById('calc-cost').innerText = `R$ ${totalCost.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}`;
-      document.getElementById('calc-net').innerHTML = `R$ ${net.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}<span class="text-sm font-normal text-slate-400">/mês</span>`;
+      document.getElementById('roi-gross').innerText = `R$ ${gross.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}`;
+      document.getElementById('roi-cost').innerText = `R$ ${totalCost.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}`;
+      document.getElementById('roi-net').innerHTML = `R$ ${net.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}<span class="text-xs font-normal text-slate-400 font-sans">/mês</span>`;
+      document.getElementById('roi-annual').innerHTML = `Projeção Anual: <strong class="text-white">R$ ${annual.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</strong>`;
     }
 
-    // Inicializar calculadora
-    updateCalculator();
+    // Inicialização
+    calcROI();
   </script>
 
 </body>
