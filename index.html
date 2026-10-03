@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sigma Pro · Plataforma de Gestão IPTV</title>
-  <meta name="description" content="Plataforma de alta performance para gestão de clientes, revendas e conexões IPTV. Sistema White Label completo com arquitetura multi-tema.">
+  <title>FAST IPTV · Painel de Gestão & Créditos para Revenda</title>
+  <meta name="description" content="Seja um revendedor FAST IPTV. Painel de alta performance, créditos a partir de R$ 2,00, testes rápidos em 1 clique e total compatibilidade com os melhores aplicativos.">
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 
   <!-- Fontes: Inter & Plus Jakarta Sans -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
 
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -21,19 +21,14 @@
         extend: {
           fontFamily: {
             sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
-            heading: ['"Plus Jakarta Sans"', 'Inter', 'sans-serif']
+            heading: ['"Plus Jakarta Sans"', 'Inter', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace']
           },
           colors: {
-            base: {
-              DEFAULT: '#090A0E',
-              surface: '#101218',
-              surfaceHover: '#151821',
-              border: '#1E222D',
-              borderLight: '#2A3040'
-            },
-            primary: {
+            fast: {
               DEFAULT: '#009EF7',
-              hover: '#0087D4'
+              dark: '#007AB8',
+              accent: '#10B981'
             }
           }
         }
@@ -45,35 +40,27 @@
   <script src="https://unpkg.com/lucide@latest"></script>
 
   <style>
-    /* Estilo Minimalista Corporativo Puro (Sem degradês mirabolantes) */
     body {
-      background-color: #090A0E;
+      background-color: #080A0E;
       color: #94A3B8;
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
       -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-    }
-
-    /* Linhas e bordas limpas */
-    .clean-border {
-      border: 1px solid #1E222D;
     }
 
     .clean-card {
-      background-color: #101218;
-      border: 1px solid #1E222D;
-      transition: border-color 0.2s ease, background-color 0.2s ease;
+      background-color: #0E1118;
+      border: 1px solid #1C222F;
+      transition: all 0.2s ease;
     }
 
     .clean-card:hover {
-      border-color: #2E3547;
-      background-color: #131620;
+      border-color: #2D374B;
     }
 
     /* Range Slider minimalista */
     input[type=range] {
       -webkit-appearance: none;
-      background: #1E222D;
+      background: #1C222F;
       height: 4px;
       border-radius: 2px;
     }
@@ -87,15 +74,15 @@
       border: 2px solid #FFFFFF;
     }
 
-    /* Scrollbar sutil */
+    /* Scrollbar */
     ::-webkit-scrollbar {
       width: 6px;
     }
     ::-webkit-scrollbar-track {
-      background: #090A0E;
+      background: #080A0E;
     }
     ::-webkit-scrollbar-thumb {
-      background: #1E222D;
+      background: #1C222F;
       border-radius: 3px;
     }
   </style>
@@ -103,29 +90,32 @@
 <body class="min-h-screen selection:bg-slate-800 selection:text-white">
 
   <!-- ==========================================
-       HEADER / NAVBAR MINIMALISTA
+       HEADER MINIMALISTA FAST IPTV
        ========================================== -->
-  <header class="sticky top-0 z-50 bg-[#090A0E]/95 backdrop-blur-sm border-b border-[#1E222D]">
+  <header class="sticky top-0 z-50 bg-[#080A0E]/95 backdrop-blur-md border-b border-[#1C222F]">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
       
-      <!-- Marca -->
+      <!-- Logo da Marca -->
       <a href="#" class="flex items-center gap-2.5">
-        <div class="w-8 h-8 rounded bg-[#101218] border border-[#1E222D] flex items-center justify-center">
+        <div class="w-8 h-8 rounded bg-[#0E1118] border border-[#1C222F] flex items-center justify-center">
           <svg class="w-4 h-4 text-[#009EF7] fill-current" viewBox="0 0 24 24">
             <path d="M5 3l14 9-14 9V3z"/>
           </svg>
         </div>
-        <span class="font-heading font-bold text-white text-base tracking-tight">
-          Sigma<span class="text-[#009EF7]">Pro</span>
-        </span>
+        <div class="flex items-center gap-1.5">
+          <span class="font-heading font-extrabold text-white text-base tracking-tight">
+            FAST <span class="text-[#009EF7]">IPTV</span>
+          </span>
+          <span class="text-[9px] font-mono font-bold px-1.5 py-0.5 rounded bg-white/5 border border-white/10 text-slate-300">SERVER</span>
+        </div>
       </a>
 
       <!-- Menu de Navegação -->
-      <nav class="hidden md:flex items-center gap-7 text-xs font-medium text-slate-400">
-        <a href="#telas" class="hover:text-white transition-colors">Telas do Painel</a>
-        <a href="#recursos" class="hover:text-white transition-colors">Recursos</a>
-        <a href="#simulador" class="hover:text-white transition-colors">Simulador</a>
-        <a href="#planos" class="hover:text-white transition-colors">Planos</a>
+      <nav class="hidden md:flex items-center gap-6 text-xs font-medium text-slate-300">
+        <a href="#precos" class="hover:text-white transition-colors">Tabela de Créditos</a>
+        <a href="#apps" class="hover:text-white transition-colors">Apps Parceiros</a>
+        <a href="#painel" class="hover:text-white transition-colors">Nosso Painel</a>
+        <a href="#lucratividade" class="hover:text-white transition-colors">Simulador de Lucro</a>
         <a href="#faq" class="hover:text-white transition-colors">Dúvidas</a>
       </nav>
 
@@ -135,17 +125,17 @@
           href="https://demo.sigmast.site" 
           target="_blank" 
           rel="noopener noreferrer"
-          class="hidden sm:inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded text-xs font-medium text-slate-300 hover:text-white bg-[#101218] border border-[#1E222D] hover:border-slate-700 transition-colors"
+          class="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded text-xs font-medium text-slate-300 hover:text-white bg-[#0E1118] border border-[#1C222F] hover:border-slate-600 transition-colors"
         >
-          <span>Acessar Demo</span>
+          <span>Painel Demo</span>
           <i data-lucide="external-link" class="w-3.5 h-3.5 text-slate-500"></i>
         </a>
 
         <a 
-          href="#contato" 
+          href="#precos" 
           class="inline-flex items-center gap-1.5 px-4 py-1.5 rounded text-xs font-semibold text-white bg-[#009EF7] hover:bg-[#0087D4] transition-colors"
         >
-          <span>Falar no WhatsApp</span>
+          <span>Comprar Créditos</span>
         </a>
       </div>
 
@@ -155,88 +145,396 @@
   <main>
 
     <!-- ==========================================
-         HERO SECTION (SUPER MINIMALISTA)
+         HERO SECTION: SEJA REVENDEDOR FAST IPTV
          ========================================== -->
-    <section class="max-w-4xl mx-auto px-4 sm:px-6 pt-20 pb-16 text-center">
+    <section class="max-w-4xl mx-auto px-4 sm:px-6 pt-16 pb-14 text-center">
       
-      <div class="inline-flex items-center gap-2 px-3 py-1 rounded bg-[#101218] border border-[#1E222D] text-xs font-medium text-slate-300 mb-6">
+      <!-- Badge de Entrada -->
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded bg-[#0E1118] border border-[#1C222F] text-xs font-medium text-slate-300 mb-6">
         <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
-        <span>Sistema Operacional IPTV · Arquitetura Multi-Tema</span>
+        <span>Servidor de Alta Performance · Créditos a partir de <strong>R$ 2,00</strong></span>
       </div>
 
       <h1 class="font-heading font-extrabold text-3xl sm:text-5xl lg:text-6xl text-white tracking-tight leading-tight">
-        Plataforma Profissional para Gestão de IPTV
+        Seja um Revendedor <br class="hidden sm:block">
+        <span class="text-[#009EF7]">FAST IPTV</span>
       </h1>
 
-      <p class="mt-5 text-base sm:text-lg text-slate-400 max-w-2xl mx-auto leading-relaxed">
-        Controle completo de clientes, criação de testes rápidos, gestão de revendas e monitoramento de conexões ativas. Tudo 100% White Label com a sua marca e domínio próprio.
+      <p class="mt-5 text-base sm:text-lg text-slate-300 max-w-2xl mx-auto leading-relaxed">
+        Servidor estável com entrega ultra rápida, suporte dedicado, compatibilidade com todos os principais aplicativos do mercado e painel completo com testes ilimitados.
       </p>
 
+      <!-- Botões de Ação Imediata -->
       <div class="mt-8 flex flex-wrap items-center justify-center gap-3">
+        <a 
+          href="#precos" 
+          class="inline-flex items-center gap-2 px-6 py-3 rounded text-xs font-bold text-white bg-[#009EF7] hover:bg-[#0087D4] transition-colors"
+        >
+          <i data-lucide="shopping-cart" class="w-4 h-4"></i>
+          <span>Ver Tabela de Preços dos Créditos</span>
+        </a>
+
         <a 
           href="https://demo.sigmast.site" 
           target="_blank" 
           rel="noopener noreferrer"
-          class="inline-flex items-center gap-2 px-6 py-3 rounded text-xs font-bold text-white bg-[#009EF7] hover:bg-[#0087D4] transition-colors"
+          class="inline-flex items-center gap-2 px-5 py-3 rounded text-xs font-medium text-slate-200 hover:text-white bg-[#0E1118] border border-[#1C222F] hover:border-slate-600 transition-colors"
         >
-          <i data-lucide="play" class="w-3.5 h-3.5 fill-current"></i>
-          <span>Explorar Painel de Demonstração</span>
-        </a>
-
-        <a 
-          href="#contato" 
-          class="inline-flex items-center gap-2 px-5 py-3 rounded text-xs font-medium text-slate-300 hover:text-white bg-[#101218] border border-[#1E222D] hover:border-slate-600 transition-colors"
-        >
-          <i data-lucide="message-circle" class="w-3.5 h-3.5 text-emerald-400"></i>
-          <span>Solicitar Contratação</span>
+          <i data-lucide="play" class="w-4 h-4 text-[#009EF7]"></i>
+          <span>Testar Painel ao Vivo</span>
         </a>
       </div>
 
-      <!-- Métricas limpas em linha -->
-      <div class="mt-14 pt-8 border-t border-[#1E222D] grid grid-cols-2 sm:grid-cols-4 gap-6 text-left">
+      <!-- Resumo Rápido -->
+      <div class="mt-12 pt-8 border-t border-[#1C222F] grid grid-cols-2 sm:grid-cols-4 gap-4 text-left">
         <div>
-          <p class="text-xl sm:text-2xl font-bold text-white font-heading">99.98%</p>
-          <p class="text-xs text-slate-500 mt-0.5">Uptime dos Servidores</p>
+          <span class="text-xs text-slate-500 block">Menor Custo</span>
+          <p class="text-lg font-bold text-white font-mono mt-0.5">R$ 2,00 / un</p>
         </div>
         <div>
-          <p class="text-xl sm:text-2xl font-bold text-white font-heading">&lt; 180ms</p>
-          <p class="text-xs text-slate-500 mt-0.5">Resposta Rápida via CDN</p>
+          <span class="text-xs text-slate-500 block">Testes no Painel</span>
+          <p class="text-lg font-bold text-emerald-400 font-mono mt-0.5">Ilimitados</p>
         </div>
         <div>
-          <p class="text-xl sm:text-2xl font-bold text-white font-heading">2 Temas</p>
-          <p class="text-xs text-slate-500 mt-0.5">Sigma Pro & Xtream</p>
+          <span class="text-xs text-slate-500 block">Liberação</span>
+          <p class="text-lg font-bold text-white font-mono mt-0.5">Imediata</p>
         </div>
         <div>
-          <p class="text-xl sm:text-2xl font-bold text-white font-heading">100%</p>
-          <p class="text-xs text-slate-500 mt-0.5">White Label (Sua Marca)</p>
+          <span class="text-xs text-slate-500 block">Estabilidade</span>
+          <p class="text-lg font-bold text-white font-mono mt-0.5">Sem Travas</p>
         </div>
       </div>
 
     </section>
 
     <!-- ==========================================
-         SEÇÃO: TELAS DO PAINEL (MOCKUP LIMPO)
+         TABELA OFICIAL DE PREÇOS DOS CRÉDITOS
          ========================================== -->
-    <section id="telas" class="max-w-5xl mx-auto px-4 sm:px-6 py-14 border-t border-[#1E222D]">
+    <section id="precos" class="max-w-5xl mx-auto px-4 sm:px-6 py-14 border-t border-[#1C222F]">
+      
+      <div class="text-center max-w-xl mx-auto mb-10">
+        <span class="text-xs font-mono font-bold text-[#009EF7] uppercase tracking-wider">VALORES PARA REVENDA</span>
+        <h2 class="font-heading text-2xl sm:text-3xl font-bold text-white mt-1">
+          Pacotes de Créditos FAST IPTV
+        </h2>
+        <p class="text-xs text-slate-400 mt-2">
+          Recargas flexíveis sem mensalidade fixa. Quanto maior o pacote, menor o valor unitário:
+        </p>
+      </div>
+
+      <!-- Grid dos 5 Pacotes -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 items-stretch">
+        
+        <!-- Pacote 10 Créditos -->
+        <div class="clean-card rounded-lg p-5 flex flex-col justify-between">
+          <div>
+            <div class="text-[11px] font-mono text-slate-400 font-bold uppercase">Iniciante</div>
+            <h3 class="text-base font-bold text-white mt-1">10 Créditos</h3>
+            
+            <div class="my-4 pb-4 border-b border-[#1C222F]">
+              <span class="text-2xl font-bold text-white font-mono">R$ 65</span>
+              <span class="text-[11px] text-slate-400 block mt-1">R$ 6,50 por crédito</span>
+            </div>
+
+            <ul class="space-y-2 text-xs text-slate-300">
+              <li class="flex items-center gap-1.5">
+                <i data-lucide="check" class="w-3.5 h-3.5 text-[#009EF7]"></i>
+                <span>Painel completo</span>
+              </li>
+              <li class="flex items-center gap-1.5">
+                <i data-lucide="check" class="w-3.5 h-3.5 text-[#009EF7]"></i>
+                <span>Testes ilimitados</span>
+              </li>
+              <li class="flex items-center gap-1.5">
+                <i data-lucide="check" class="w-3.5 h-3.5 text-[#009EF7]"></i>
+                <span>Suporte WhatsApp</span>
+              </li>
+            </ul>
+          </div>
+
+          <a 
+            href="https://wa.me/?text=Ol%C3%A1!%20Gostaria%20de%20comprar%20o%20Pacote%20de%2010%20cr%C3%A9ditos%20FAST%20IPTV%20por%20R$%2065,00." 
+            target="_blank" 
+            rel="noopener noreferrer"
+            class="mt-5 block text-center py-2 rounded text-xs font-semibold text-slate-200 bg-[#141822] hover:bg-[#1D2230] border border-[#1C222F] transition-colors"
+          >
+            Comprar Pacote
+          </a>
+        </div>
+
+        <!-- Pacote 30 Créditos -->
+        <div class="clean-card rounded-lg p-5 flex flex-col justify-between">
+          <div>
+            <div class="text-[11px] font-mono text-slate-400 font-bold uppercase">Econômico</div>
+            <h3 class="text-base font-bold text-white mt-1">30 Créditos</h3>
+            
+            <div class="my-4 pb-4 border-b border-[#1C222F]">
+              <span class="text-2xl font-bold text-white font-mono">R$ 150</span>
+              <span class="text-[11px] text-slate-400 block mt-1">R$ 5,00 por crédito</span>
+            </div>
+
+            <ul class="space-y-2 text-xs text-slate-300">
+              <li class="flex items-center gap-1.5">
+                <i data-lucide="check" class="w-3.5 h-3.5 text-[#009EF7]"></i>
+                <span>Painel completo</span>
+              </li>
+              <li class="flex items-center gap-1.5">
+                <i data-lucide="check" class="w-3.5 h-3.5 text-[#009EF7]"></i>
+                <span>Testes ilimitados</span>
+              </li>
+              <li class="flex items-center gap-1.5">
+                <i data-lucide="check" class="w-3.5 h-3.5 text-[#009EF7]"></i>
+                <span>Economia de 23%</span>
+              </li>
+            </ul>
+          </div>
+
+          <a 
+            href="https://wa.me/?text=Ol%C3%A1!%20Gostaria%20de%20comprar%20o%20Pacote%20de%2030%20cr%C3%A9ditos%20FAST%20IPTV%20por%20R$%20150,00." 
+            target="_blank" 
+            rel="noopener noreferrer"
+            class="mt-5 block text-center py-2 rounded text-xs font-semibold text-slate-200 bg-[#141822] hover:bg-[#1D2230] border border-[#1C222F] transition-colors"
+          >
+            Comprar Pacote
+          </a>
+        </div>
+
+        <!-- Pacote 50 Créditos -->
+        <div class="clean-card rounded-lg p-5 flex flex-col justify-between">
+          <div>
+            <div class="text-[11px] font-mono text-slate-400 font-bold uppercase">Intermediário</div>
+            <h3 class="text-base font-bold text-white mt-1">50 Créditos</h3>
+            
+            <div class="my-4 pb-4 border-b border-[#1C222F]">
+              <span class="text-2xl font-bold text-white font-mono">R$ 225</span>
+              <span class="text-[11px] text-slate-400 block mt-1">R$ 4,50 por crédito</span>
+            </div>
+
+            <ul class="space-y-2 text-xs text-slate-300">
+              <li class="flex items-center gap-1.5">
+                <i data-lucide="check" class="w-3.5 h-3.5 text-[#009EF7]"></i>
+                <span>Painel completo</span>
+              </li>
+              <li class="flex items-center gap-1.5">
+                <i data-lucide="check" class="w-3.5 h-3.5 text-[#009EF7]"></i>
+                <span>Criação de sub-revendas</span>
+              </li>
+              <li class="flex items-center gap-1.5">
+                <i data-lucide="check" class="w-3.5 h-3.5 text-[#009EF7]"></i>
+                <span>Economia de 30%</span>
+              </li>
+            </ul>
+          </div>
+
+          <a 
+            href="https://wa.me/?text=Ol%C3%A1!%20Gostaria%20de%20comprar%20o%20Pacote%20de%2050%20cr%C3%A9ditos%20FAST%20IPTV%20por%20R$%20225,00." 
+            target="_blank" 
+            rel="noopener noreferrer"
+            class="mt-5 block text-center py-2 rounded text-xs font-semibold text-slate-200 bg-[#141822] hover:bg-[#1D2230] border border-[#1C222F] transition-colors"
+          >
+            Comprar Pacote
+          </a>
+        </div>
+
+        <!-- Pacote 100 Créditos (Mais Vendido) -->
+        <div class="clean-card rounded-lg p-5 flex flex-col justify-between border-[#009EF7] bg-[#10141F]">
+          <div>
+            <div class="flex items-center justify-between">
+              <span class="text-[10px] font-mono text-[#009EF7] font-bold uppercase">Mais Popular</span>
+            </div>
+            <h3 class="text-base font-bold text-white mt-1">100 Créditos</h3>
+            
+            <div class="my-4 pb-4 border-b border-[#1C222F]">
+              <span class="text-2xl font-bold text-white font-mono">R$ 350</span>
+              <span class="text-[11px] text-slate-300 block mt-1">R$ 3,50 por crédito</span>
+            </div>
+
+            <ul class="space-y-2 text-xs text-slate-200">
+              <li class="flex items-center gap-1.5">
+                <i data-lucide="check" class="w-3.5 h-3.5 text-[#009EF7]"></i>
+                <span>Painel completo</span>
+              </li>
+              <li class="flex items-center gap-1.5">
+                <i data-lucide="check" class="w-3.5 h-3.5 text-[#009EF7]"></i>
+                <span>Sub-revendas liberadas</span>
+              </li>
+              <li class="flex items-center gap-1.5">
+                <i data-lucide="check" class="w-3.5 h-3.5 text-[#009EF7]"></i>
+                <span>Atendimento prioritário</span>
+              </li>
+            </ul>
+          </div>
+
+          <a 
+            href="https://wa.me/?text=Ol%C3%A1!%20Gostaria%20de%20comprar%20o%20Pacote%20de%20100%20cr%C3%A9ditos%20FAST%20IPTV%20por%20R$%20350,00." 
+            target="_blank" 
+            rel="noopener noreferrer"
+            class="mt-5 block text-center py-2 rounded text-xs font-bold text-white bg-[#009EF7] hover:bg-[#0087D4] transition-colors"
+          >
+            Comprar Pacote
+          </a>
+        </div>
+
+        <!-- Pacote 300 Créditos (Melhor Preço - R$ 2,00/crédito) -->
+        <div class="clean-card rounded-lg p-5 flex flex-col justify-between border-emerald-500/60 bg-[#0C1418]">
+          <div>
+            <div class="flex items-center justify-between">
+              <span class="text-[10px] font-mono text-emerald-400 font-bold uppercase">Melhor Custo</span>
+            </div>
+            <h3 class="text-base font-bold text-white mt-1">300 Créditos</h3>
+            
+            <div class="my-4 pb-4 border-b border-[#1C222F]">
+              <span class="text-2xl font-bold text-emerald-400 font-mono">R$ 600</span>
+              <span class="text-[11px] text-emerald-300 font-bold block mt-1">Apenas R$ 2,00 / crédito</span>
+            </div>
+
+            <ul class="space-y-2 text-xs text-slate-200">
+              <li class="flex items-center gap-1.5">
+                <i data-lucide="check" class="w-3.5 h-3.5 text-emerald-400"></i>
+                <span>Menor valor unitário</span>
+              </li>
+              <li class="flex items-center gap-1.5">
+                <i data-lucide="check" class="w-3.5 h-3.5 text-emerald-400"></i>
+                <span>Máxima margem de lucro</span>
+              </li>
+              <li class="flex items-center gap-1.5">
+                <i data-lucide="check" class="w-3.5 h-3.5 text-emerald-400"></i>
+                <span>Suporte VIP 24/7</span>
+              </li>
+            </ul>
+          </div>
+
+          <a 
+            href="https://wa.me/?text=Ol%C3%A1!%20Gostaria%20de%20comprar%20o%20Pacote%20de%20300%20cr%C3%A9ditos%20FAST%20IPTV%20por%20R$%20600,00." 
+            target="_blank" 
+            rel="noopener noreferrer"
+            class="mt-5 block text-center py-2 rounded text-xs font-bold text-white bg-emerald-600 hover:bg-emerald-500 transition-colors"
+          >
+            Garantir a R$ 2,00
+          </a>
+        </div>
+
+      </div>
+
+      <!-- Aviso de ativação -->
+      <div class="mt-4 p-3 rounded bg-[#0E1118] border border-[#1C222F] text-center text-xs text-slate-400">
+        💡 <strong>Ativação Rápida:</strong> Os créditos são inseridos no seu painel em minutos após a confirmação do pagamento via PIX no WhatsApp.
+      </div>
+
+    </section>
+
+    <!-- ==========================================
+         SEÇÃO: APPS PARCEIROS & COMPATIBILIDADE
+         ========================================== -->
+    <section id="apps" class="max-w-5xl mx-auto px-4 sm:px-6 py-14 border-t border-[#1C222F]">
+      
+      <div class="text-center max-w-xl mx-auto mb-10">
+        <span class="text-xs font-mono font-bold text-[#009EF7] uppercase tracking-wider">COMPATIBILIDADE TOTAL</span>
+        <h2 class="font-heading text-2xl sm:text-3xl font-bold text-white mt-1">
+          Nossos Apps Parceiros
+        </h2>
+        <p class="text-xs text-slate-400 mt-2">
+          O FAST IPTV é 100% compatível com os players mais modernos e estáveis do mercado em qualquer aparelho:
+        </p>
+      </div>
+
+      <!-- Grade dos Apps Parceiros -->
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
+        
+        <!-- App 1: IBO Player -->
+        <div class="clean-card rounded-lg p-4 text-center">
+          <div class="w-10 h-10 mx-auto rounded bg-[#141822] border border-[#1C222F] flex items-center justify-center text-[#009EF7] mb-2.5">
+            <i data-lucide="tv" class="w-5 h-5"></i>
+          </div>
+          <h3 class="text-xs font-bold text-white">IBO Player Pro</h3>
+          <p class="text-[10px] text-slate-500 mt-1">Smart TV Samsung / LG & Android</p>
+        </div>
+
+        <!-- App 2: XCIPTV Player -->
+        <div class="clean-card rounded-lg p-4 text-center">
+          <div class="w-10 h-10 mx-auto rounded bg-[#141822] border border-[#1C222F] flex items-center justify-center text-cyan-400 mb-2.5">
+            <i data-lucide="play-square" class="w-5 h-5"></i>
+          </div>
+          <h3 class="text-xs font-bold text-white">XCIPTV Player</h3>
+          <p class="text-[10px] text-slate-500 mt-1">Android TV / TV Box / Celular</p>
+        </div>
+
+        <!-- App 3: Smarters Pro -->
+        <div class="clean-card rounded-lg p-4 text-center">
+          <div class="w-10 h-10 mx-auto rounded bg-[#141822] border border-[#1C222F] flex items-center justify-center text-purple-400 mb-2.5">
+            <i data-lucide="monitor" class="w-5 h-5"></i>
+          </div>
+          <h3 class="text-xs font-bold text-white">IPTV Smarters</h3>
+          <p class="text-[10px] text-slate-500 mt-1">iOS, Android, Windows & Mac</p>
+        </div>
+
+        <!-- App 4: TiviMate -->
+        <div class="clean-card rounded-lg p-4 text-center">
+          <div class="w-10 h-10 mx-auto rounded bg-[#141822] border border-[#1C222F] flex items-center justify-center text-amber-400 mb-2.5">
+            <i data-lucide="layers" class="w-5 h-5"></i>
+          </div>
+          <h3 class="text-xs font-bold text-white">TiviMate Player</h3>
+          <p class="text-[10px] text-slate-500 mt-1">Interface Premium para Fire Stick</p>
+        </div>
+
+        <!-- App 5: APK Próprio FAST IPTV -->
+        <div class="clean-card rounded-lg p-4 text-center border-[#009EF7]/40 bg-[#10141F]">
+          <div class="w-10 h-10 mx-auto rounded bg-[#009EF7]/20 border border-[#009EF7]/30 flex items-center justify-center text-[#009EF7] mb-2.5">
+            <i data-lucide="smartphone" class="w-5 h-5"></i>
+          </div>
+          <h3 class="text-xs font-bold text-white">APK Oficial FAST</h3>
+          <p class="text-[10px] text-[#009EF7] mt-1 font-semibold">Direto para TV Box & Celular</p>
+        </div>
+
+        <!-- App 6: WebPlayer Navegador -->
+        <div class="clean-card rounded-lg p-4 text-center">
+          <div class="w-10 h-10 mx-auto rounded bg-[#141822] border border-[#1C222F] flex items-center justify-center text-emerald-400 mb-2.5">
+            <i data-lucide="globe" class="w-5 h-5"></i>
+          </div>
+          <h3 class="text-xs font-bold text-white">WebPlayer Online</h3>
+          <p class="text-[10px] text-slate-500 mt-1">Assista no navegador sem instalar</p>
+        </div>
+
+      </div>
+
+      <!-- Dispositivos suportados -->
+      <div class="mt-6 flex flex-wrap items-center justify-center gap-6 text-xs text-slate-400 font-medium pt-4 border-t border-[#1C222F]">
+        <span class="flex items-center gap-1.5"><i data-lucide="check-circle" class="w-4 h-4 text-[#009EF7]"></i> Smart TVs (Samsung & LG)</span>
+        <span class="flex items-center gap-1.5"><i data-lucide="check-circle" class="w-4 h-4 text-[#009EF7]"></i> TV Box & Fire TV Stick</span>
+        <span class="flex items-center gap-1.5"><i data-lucide="check-circle" class="w-4 h-4 text-[#009EF7]"></i> Smartphones Android & iPhone</span>
+        <span class="flex items-center gap-1.5"><i data-lucide="check-circle" class="w-4 h-4 text-[#009EF7]"></i> Computadores & Notebooks</span>
+      </div>
+
+    </section>
+
+    <!-- ==========================================
+         SEÇÃO: O NOSSO PAINEL (PRINTS REAIS)
+         ========================================== -->
+    <section id="painel" class="max-w-5xl mx-auto px-4 sm:px-6 py-14 border-t border-[#1C222F]">
       
       <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-6">
         <div>
-          <h2 class="font-heading text-xl sm:text-2xl font-bold text-white">Interface do Painel</h2>
-          <p class="text-xs text-slate-400 mt-1">Alterne entre os dois layouts disponíveis no sistema:</p>
+          <span class="text-xs font-mono font-bold text-[#009EF7] uppercase tracking-wider">TECNOLOGIA DO PAINEL</span>
+          <h2 class="font-heading text-2xl sm:text-3xl font-bold text-white mt-1">
+            Conheça o Painel de Gestão FAST IPTV
+          </h2>
+          <p class="text-xs text-slate-400 mt-1">
+            Você escolhe como quer gerenciar: use o modelo Sigma Pro ou o clássico Xtream no mesmo sistema:
+          </p>
         </div>
 
-        <!-- Seletor de Abas Minimalista -->
-        <div class="inline-flex rounded bg-[#101218] border border-[#1E222D] p-1 self-start sm:self-auto">
+        <!-- Seletor de Abas -->
+        <div class="inline-flex rounded bg-[#0E1118] border border-[#1C222F] p-1 self-start sm:self-auto shrink-0">
           <button 
             id="tab-btn-sigma" 
-            onclick="selectTheme('sigma')"
+            onclick="switchTheme('sigma')"
             class="px-4 py-1.5 rounded text-xs font-semibold bg-[#009EF7] text-white transition-all"
           >
             Sigma Pro
           </button>
           <button 
             id="tab-btn-xtream" 
-            onclick="selectTheme('xtream')"
+            onclick="switchTheme('xtream')"
             class="px-4 py-1.5 rounded text-xs font-semibold text-slate-400 hover:text-white transition-all"
           >
             Xtream Clássico
@@ -244,95 +542,84 @@
         </div>
       </div>
 
-      <!-- Moldura Limpa do Painel -->
-      <div class="rounded-lg bg-[#101218] border border-[#1E222D] overflow-hidden">
+      <!-- Moldura Limpa da Tela -->
+      <div class="rounded-lg bg-[#0E1118] border border-[#1C222F] overflow-hidden">
         
-        <!-- Header da Janela -->
-        <div class="h-10 px-4 bg-[#0D0F14] border-b border-[#1E222D] flex items-center justify-between text-xs text-slate-400">
+        <!-- Header da Moldura -->
+        <div class="h-10 px-4 bg-[#0A0C12] border-b border-[#1C222F] flex items-center justify-between text-xs text-slate-400">
           <div class="flex items-center gap-2">
-            <span class="w-2.5 h-2.5 rounded-full bg-[#1E222D]"></span>
-            <span class="w-2.5 h-2.5 rounded-full bg-[#1E222D]"></span>
-            <span class="w-2.5 h-2.5 rounded-full bg-[#1E222D]"></span>
+            <span class="w-2.5 h-2.5 rounded-full bg-[#1C222F]"></span>
+            <span class="w-2.5 h-2.5 rounded-full bg-[#1C222F]"></span>
+            <span class="w-2.5 h-2.5 rounded-full bg-[#1C222F]"></span>
             <span id="window-url" class="ml-3 font-mono text-[11px] text-slate-500">demo.sigmast.site/#/dashboard</span>
           </div>
           <a href="https://demo.sigmast.site" target="_blank" class="text-[#009EF7] hover:underline flex items-center gap-1 text-[11px]">
-            <span>Abrir ao vivo</span>
+            <span>Acessar Demo ao Vivo</span>
             <i data-lucide="external-link" class="w-3 h-3"></i>
           </a>
         </div>
 
-        <!-- Área da Imagem -->
-        <div class="p-2 sm:p-4 bg-[#090A0E]">
+        <!-- Imagem da Tela Real -->
+        <div class="p-2 sm:p-4 bg-[#080A0E]">
           <img 
             id="screen-sigma" 
             src="assets/sigma-pro-default.png" 
             alt="Dashboard Sigma Pro" 
-            class="w-full h-auto rounded border border-[#1E222D] object-cover"
+            class="w-full h-auto rounded border border-[#1C222F] object-cover"
           >
           <img 
             id="screen-xtream" 
             src="assets/xtream-classic-default.png" 
             alt="Dashboard Xtream Clássico" 
-            class="w-full h-auto rounded border border-[#1E222D] object-cover hidden"
+            class="w-full h-auto rounded border border-[#1C222F] object-cover hidden"
           >
         </div>
 
-        <!-- Descrição Limpa da Tela -->
-        <div class="px-4 py-3 bg-[#0D0F14] border-t border-[#1E222D] flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs">
+        <!-- Rodapé da Moldura -->
+        <div class="px-4 py-3 bg-[#0A0C12] border-t border-[#1C222F] flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs">
           <p id="screen-desc" class="text-slate-300">
-            <strong>Sigma Pro:</strong> Painel moderno com indicadores de clientes, testes ativos, conexões simultâneas e atalhos rápidos.
+            <strong>Sigma Pro:</strong> Painel moderno com cartões de telemetria (Clientes, Testes Ativos, Expirados, Conexões ao Vivo e Revendas).
           </p>
-          <span class="text-slate-500 shrink-0 font-mono text-[11px]">Resolução Nativa 1080p</span>
+          <a href="https://demo.sigmast.site" target="_blank" class="text-xs font-semibold text-[#009EF7] hover:underline shrink-0">
+            Testar Todas as Funções →
+          </a>
         </div>
 
       </div>
 
-    </section>
-
-    <!-- ==========================================
-         SEÇÃO: MENUS LATERAIS
-         ========================================== -->
-    <section class="max-w-5xl mx-auto px-4 sm:px-6 py-14 border-t border-[#1E222D]">
-      
-      <div class="mb-8">
-        <h2 class="font-heading text-xl sm:text-2xl font-bold text-white">Estrutura de Menus Laterais</h2>
-        <p class="text-xs text-slate-400 mt-1">O painel oferece dois formatos de navegação lateral para você escolher:</p>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-start">
+      <!-- Comparativo das Duas Barras Laterais -->
+      <div class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6 items-start">
         
-        <!-- Barra Sigma Pro -->
         <div class="clean-card rounded-lg p-5">
-          <div class="flex items-center justify-between pb-3 border-b border-[#1E222D]">
+          <div class="flex items-center justify-between pb-3 border-b border-[#1C222F]">
             <h3 class="text-sm font-bold text-white">Barra Sigma Pro</h3>
             <span class="text-[10px] font-semibold px-2 py-0.5 rounded bg-[#009EF7]/10 text-[#009EF7]">MODERNO</span>
           </div>
-          <p class="text-xs text-slate-400 mt-3 leading-relaxed">
-            Organização limpa separada por seções: Clientes & Acessos, Rede de Revendas e Preferências do Sistema.
+          <p class="text-xs text-slate-400 mt-2">
+            Organização limpa por categorias: Clientes, Rede de Revendas e Configurações da Marca.
           </p>
-          <div class="mt-4 rounded bg-[#090A0E] border border-[#1E222D] p-1.5 overflow-hidden">
+          <div class="mt-4 rounded bg-[#080A0E] border border-[#1C222F] p-1.5 overflow-hidden">
             <img 
               src="assets/sidebar-sigma-pro.png" 
               alt="Menu Lateral Sigma Pro" 
-              class="w-full h-auto rounded object-cover max-h-[360px]"
+              class="w-full h-auto rounded object-cover max-h-[350px]"
             >
           </div>
         </div>
 
-        <!-- Barra Xtream Clássica -->
         <div class="clean-card rounded-lg p-5">
-          <div class="flex items-center justify-between pb-3 border-b border-[#1E222D]">
+          <div class="flex items-center justify-between pb-3 border-b border-[#1C222F]">
             <h3 class="text-sm font-bold text-white">Barra Xtream Clássica</h3>
             <span class="text-[10px] font-semibold px-2 py-0.5 rounded bg-slate-800 text-slate-300">TRADICIONAL</span>
           </div>
-          <p class="text-xs text-slate-400 mt-3 leading-relaxed">
-            Layout consagrado com telemetria do servidor principal online e pastas retráteis para linhas e revendedores.
+          <p class="text-xs text-slate-400 mt-2">
+            Status do Servidor Principal Online em tempo real e pastas retráteis para linhas.
           </p>
-          <div class="mt-4 rounded bg-[#090A0E] border border-[#1E222D] p-1.5 overflow-hidden">
+          <div class="mt-4 rounded bg-[#080A0E] border border-[#1C222F] p-1.5 overflow-hidden">
             <img 
               src="assets/sidebar-xtream-classic.png" 
               alt="Menu Lateral Xtream Clássico" 
-              class="w-full h-auto rounded object-cover max-h-[360px]"
+              class="w-full h-auto rounded object-cover max-h-[350px]"
             >
           </div>
         </div>
@@ -342,295 +629,110 @@
     </section>
 
     <!-- ==========================================
-         SEÇÃO: FUNCIONALIDADES PRINCIPAIS
+         SIMULADOR DE LUCRATIVIDADE (COM BASE NOS CRÉDITOS)
          ========================================== -->
-    <section id="recursos" class="max-w-5xl mx-auto px-4 sm:px-6 py-14 border-t border-[#1E222D]">
+    <section id="lucratividade" class="max-w-4xl mx-auto px-4 sm:px-6 py-14 border-t border-[#1C222F]">
       
-      <div class="mb-8">
-        <h2 class="font-heading text-xl sm:text-2xl font-bold text-white">Recursos do Sistema</h2>
-        <p class="text-xs text-slate-400 mt-1">Ferramentas essenciais para o gerenciamento diário da sua operação:</p>
-      </div>
-
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-        
-        <div class="clean-card rounded-lg p-5">
-          <h3 class="text-sm font-bold text-white">100% White Label</h3>
-          <p class="text-xs text-slate-400 mt-2 leading-relaxed">
-            Utilize seu próprio logotipo, nome, cores e conecte seu domínio personalizado com certificado SSL automático.
-          </p>
-        </div>
-
-        <div class="clean-card rounded-lg p-5">
-          <h3 class="text-sm font-bold text-white">Testes Rápidos em 1 Clique</h3>
-          <p class="text-xs text-slate-400 mt-2 leading-relaxed">
-            Geração de testes com dados de login, links M3U e texto formatado pronto para envio direto pelo WhatsApp.
-          </p>
-        </div>
-
-        <div class="clean-card rounded-lg p-5">
-          <h3 class="text-sm font-bold text-white">Rede de Sub-Revendas</h3>
-          <p class="text-xs text-slate-400 mt-2 leading-relaxed">
-            Crie revendedores e sub-revendas com controle de créditos, limites e relatórios de movimentação.
-          </p>
-        </div>
-
-        <div class="clean-card rounded-lg p-5">
-          <h3 class="text-sm font-bold text-white">Conexões ao Vivo</h3>
-          <p class="text-xs text-slate-400 mt-2 leading-relaxed">
-            Monitore quais clientes estão conectados em tempo real, visualizando IP, canal em reprodução e dispositivo.
-          </p>
-        </div>
-
-        <div class="clean-card rounded-lg p-5">
-          <h3 class="text-sm font-bold text-white">Lixeira de Segurança</h3>
-          <p class="text-xs text-slate-400 mt-2 leading-relaxed">
-            Clientes removidos permanecem na lixeira com opção de recuperação imediata para evitar exclusões acidentais.
-          </p>
-        </div>
-
-        <div class="clean-card rounded-lg p-5">
-          <h3 class="text-sm font-bold text-white">Avisos e Notificações</h3>
-          <p class="text-xs text-slate-400 mt-2 leading-relaxed">
-            Publique comunicados e avisos de manutenção diretamente no topo do painel de todos os seus revendedores.
-          </p>
-        </div>
-
-      </div>
-
-    </section>
-
-    <!-- ==========================================
-         SEÇÃO: SIMULADOR DE FATURAMENTO
-         ========================================== -->
-    <section id="simulador" class="max-w-4xl mx-auto px-4 sm:px-6 py-14 border-t border-[#1E222D]">
-      
-      <div class="mb-8 text-center sm:text-left">
-        <h2 class="font-heading text-xl sm:text-2xl font-bold text-white">Simulador de Faturamento</h2>
-        <p class="text-xs text-slate-400 mt-1">Calcule a estimativa de receita mensal com base na sua carteira de clientes:</p>
+      <div class="text-center sm:text-left mb-8">
+        <span class="text-xs font-mono font-bold text-[#009EF7] uppercase tracking-wider">RETORNO SOBRE O INVESTIMENTO</span>
+        <h2 class="font-heading text-2xl sm:text-3xl font-bold text-white mt-1">
+          Simulador de Lucro para Revendedores
+        </h2>
+        <p class="text-xs text-slate-400 mt-1">
+          Comprando créditos no pacote de 300 (a R$ 2,00 cada), veja sua margem de lucro líquido mensal:
+        </p>
       </div>
 
       <div class="clean-card rounded-lg p-6 sm:p-8">
-        
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 items-center">
           
-          <!-- Controles -->
           <div class="space-y-6">
-            
             <div>
               <div class="flex justify-between items-center text-xs font-semibold text-white mb-2">
-                <span>Clientes Ativos</span>
-                <span id="calc-clients-num" class="text-sm font-bold text-[#009EF7]">150 clientes</span>
+                <span>Clientes Ativos na sua Revenda</span>
+                <span id="sim-clients-txt" class="text-sm font-bold text-[#009EF7]">100 clientes</span>
               </div>
               <input 
-                id="calc-slider-clients" 
+                id="sim-clients-slider" 
                 type="range" 
-                min="20" 
-                max="1000" 
+                min="10" 
+                max="500" 
                 step="10" 
-                value="150" 
+                value="100" 
                 class="w-full"
-                oninput="refreshCalc()"
+                oninput="updateProfitSim()"
               >
-              <div class="flex justify-between text-[10px] text-slate-500 mt-1">
-                <span>20</span>
-                <span>500</span>
-                <span>1.000</span>
+              <div class="flex justify-between text-[10px] text-slate-500 mt-1 font-mono">
+                <span>10 clientes</span>
+                <span>250</span>
+                <span>500 clientes</span>
               </div>
             </div>
 
             <div>
               <div class="flex justify-between items-center text-xs font-semibold text-white mb-2">
-                <span>Valor Cobrado por Cliente</span>
-                <span id="calc-price-num" class="text-sm font-bold text-[#009EF7]">R$ 35,00</span>
+                <span>Valor Cobrado da Mensalidade</span>
+                <span id="sim-price-txt" class="text-sm font-bold text-emerald-400">R$ 35,00</span>
               </div>
               <input 
-                id="calc-slider-price" 
+                id="sim-price-slider" 
                 type="range" 
-                min="20" 
-                max="60" 
+                min="25" 
+                max="50" 
                 step="5" 
                 value="35" 
                 class="w-full"
-                oninput="refreshCalc()"
+                oninput="updateProfitSim()"
               >
-              <div class="flex justify-between text-[10px] text-slate-500 mt-1">
-                <span>R$ 20,00</span>
+              <div class="flex justify-between text-[10px] text-slate-500 mt-1 font-mono">
+                <span>R$ 25,00</span>
                 <span>R$ 35,00</span>
-                <span>R$ 60,00</span>
+                <span>R$ 50,00</span>
               </div>
             </div>
 
-            <p class="text-[11px] text-slate-500">
-              * Estimativa com custo médio de créditos já deduzido.
+            <p class="text-[11px] text-slate-400">
+              * Calculado com base no custo de <strong>R$ 2,00 por crédito</strong> (Pacote 300).
             </p>
-
           </div>
 
-          <!-- Resultados -->
-          <div class="p-5 rounded bg-[#090A0E] border border-[#1E222D] space-y-4">
-            
+          <!-- Display de Resultados -->
+          <div class="p-5 rounded bg-[#080A0E] border border-[#1C222F] space-y-4">
             <div>
-              <span class="text-[11px] text-slate-400">Faturamento Bruto:</span>
-              <p id="calc-res-gross" class="text-xl font-bold text-white font-mono mt-0.5">R$ 5.250,00</p>
+              <span class="text-[11px] text-slate-400">Faturamento Bruto Mensal:</span>
+              <p id="sim-gross-val" class="text-xl font-bold text-white font-mono mt-0.5">R$ 3.500,00</p>
             </div>
 
-            <div class="pt-2 border-t border-[#1E222D]">
-              <span class="text-[11px] text-slate-400">Custo Estimado de Créditos:</span>
-              <p id="calc-res-cost" class="text-xs font-medium text-slate-400 font-mono mt-0.5">R$ 1.200,00</p>
+            <div class="pt-2 border-t border-[#1C222F]">
+              <span class="text-[11px] text-slate-400">Seu Custo em Créditos:</span>
+              <p id="sim-cost-val" class="text-xs font-medium text-slate-400 font-mono mt-0.5">R$ 200,00</p>
             </div>
 
-            <div class="pt-2 border-t border-[#1E222D]">
-              <span class="text-xs font-semibold text-emerald-400">Lucro Líquido Estimado:</span>
-              <p id="calc-res-net" class="text-2xl sm:text-3xl font-bold text-emerald-400 font-mono mt-1">R$ 4.050,00<span class="text-xs font-normal text-slate-400">/mês</span></p>
+            <div class="pt-2 border-t border-[#1C222F]">
+              <span class="text-xs font-semibold text-emerald-400">Lucro Líquido no Seu Bolso:</span>
+              <p id="sim-net-val" class="text-2xl sm:text-3xl font-bold text-emerald-400 font-mono mt-1">R$ 3.300,00<span class="text-xs font-normal text-slate-400">/mês</span></p>
+              <p id="sim-margin-val" class="text-[11px] text-slate-400 mt-1 font-mono">Margem de Lucro: <strong class="text-white">+94%</strong></p>
             </div>
 
             <a 
-              href="#contato" 
-              class="block text-center py-2.5 px-4 rounded text-xs font-bold text-white bg-[#009EF7] hover:bg-[#0087D4] transition-colors mt-2"
+              href="https://wa.me/?text=Ol%C3%A1!%20Gostaria%20de%20iniciar%20minha%20revenda%20FAST%20IPTV." 
+              target="_blank" 
+              rel="noopener noreferrer"
+              class="block text-center py-2.5 px-4 rounded text-xs font-bold text-white bg-emerald-600 hover:bg-emerald-500 transition-colors mt-2"
             >
-              Iniciar Operação
+              Começar a Revender Agora
             </a>
-
           </div>
 
         </div>
-
       </div>
 
     </section>
 
     <!-- ==========================================
-         SEÇÃO: PLANOS E CONTRATAÇÃO
+         FAQ (DÚVIDAS FREQUENTES)
          ========================================== -->
-    <section id="planos" class="max-w-5xl mx-auto px-4 sm:px-6 py-14 border-t border-[#1E222D]">
-      
-      <div class="mb-8">
-        <h2 class="font-heading text-xl sm:text-2xl font-bold text-white">Planos Disponíveis</h2>
-        <p class="text-xs text-slate-400 mt-1">Escolha a modalidade de acesso que melhor atende à sua estrutura:</p>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        
-        <!-- Plano Revenda -->
-        <div class="clean-card rounded-lg p-6 flex flex-col justify-between">
-          <div>
-            <span class="text-xs text-slate-400 font-mono">PLANO 01</span>
-            <h3 class="text-base font-bold text-white mt-1">Revenda Operacional</h3>
-            <p class="text-xs text-slate-400 mt-2">Para revendedores com painel direto.</p>
-
-            <div class="my-5 pb-5 border-b border-[#1E222D]">
-              <span class="text-2xl font-bold text-white font-mono">Consulte</span>
-              <span class="text-[11px] text-slate-500 block mt-0.5">Recarga de créditos sob demanda</span>
-            </div>
-
-            <ul class="space-y-2 text-xs text-slate-300">
-              <li class="flex items-center gap-2">
-                <i data-lucide="check" class="w-3.5 h-3.5 text-[#009EF7]"></i>
-                <span>Acesso ao Painel Sigma Pro</span>
-              </li>
-              <li class="flex items-center gap-2">
-                <i data-lucide="check" class="w-3.5 h-3.5 text-[#009EF7]"></i>
-                <span>Criação de testes rápidos ilimitados</span>
-              </li>
-              <li class="flex items-center gap-2">
-                <i data-lucide="check" class="w-3.5 h-3.5 text-[#009EF7]"></i>
-                <span>Suporte técnico direto no WhatsApp</span>
-              </li>
-            </ul>
-          </div>
-
-          <a 
-            href="#contato" 
-            class="mt-6 block text-center py-2.5 rounded text-xs font-semibold text-slate-200 bg-[#151821] hover:bg-[#1B202C] border border-[#1E222D] transition-colors"
-          >
-            Falar com Atendimento
-          </a>
-        </div>
-
-        <!-- Plano Master White Label (Destaque Limpo) -->
-        <div class="clean-card rounded-lg p-6 flex flex-col justify-between border-[#009EF7] bg-[#11141D]">
-          <div>
-            <span class="text-xs text-[#009EF7] font-mono font-bold">RECOMENDADO</span>
-            <h3 class="text-base font-bold text-white mt-1">Painel White Label Completo</h3>
-            <p class="text-xs text-slate-400 mt-2">Sua marca própria com domínio exclusivo.</p>
-
-            <div class="my-5 pb-5 border-b border-[#1E222D]">
-              <span class="text-2xl font-bold text-white font-mono">Consulte</span>
-              <span class="text-[11px] text-slate-400 block mt-0.5">Configuração completa de marca</span>
-            </div>
-
-            <ul class="space-y-2 text-xs text-slate-200">
-              <li class="flex items-center gap-2">
-                <i data-lucide="check" class="w-3.5 h-3.5 text-[#009EF7]"></i>
-                <span><strong>Domínio próprio</strong> com SSL automático</span>
-              </li>
-              <li class="flex items-center gap-2">
-                <i data-lucide="check" class="w-3.5 h-3.5 text-[#009EF7]"></i>
-                <span>Logotipo, nome e cores da sua marca</span>
-              </li>
-              <li class="flex items-center gap-2">
-                <i data-lucide="check" class="w-3.5 h-3.5 text-[#009EF7]"></i>
-                <span>Criação de Sub-Revendedores</span>
-              </li>
-              <li class="flex items-center gap-2">
-                <i data-lucide="check" class="w-3.5 h-3.5 text-[#009EF7]"></i>
-                <span>Acesso aos 2 temas (Sigma + Xtream)</span>
-              </li>
-            </ul>
-          </div>
-
-          <a 
-            href="#contato" 
-            class="mt-6 block text-center py-2.5 rounded text-xs font-bold text-white bg-[#009EF7] hover:bg-[#0087D4] transition-colors"
-          >
-            Quero Meu Painel White Label
-          </a>
-        </div>
-
-        <!-- Plano Infra Dedicada -->
-        <div class="clean-card rounded-lg p-6 flex flex-col justify-between">
-          <div>
-            <span class="text-xs text-slate-400 font-mono">PLANO 03</span>
-            <h3 class="text-base font-bold text-white mt-1">Operação Dedicada</h3>
-            <p class="text-xs text-slate-400 mt-2">Para servidores com alto volume de conexões.</p>
-
-            <div class="my-5 pb-5 border-b border-[#1E222D]">
-              <span class="text-2xl font-bold text-white font-mono">Sob Medida</span>
-              <span class="text-[11px] text-slate-500 block mt-0.5">Servidor e CDN dedicados</span>
-            </div>
-
-            <ul class="space-y-2 text-xs text-slate-300">
-              <li class="flex items-center gap-2">
-                <i data-lucide="check" class="w-3.5 h-3.5 text-[#009EF7]"></i>
-                <span>Instância isolada de alta performance</span>
-              </li>
-              <li class="flex items-center gap-2">
-                <i data-lucide="check" class="w-3.5 h-3.5 text-[#009EF7]"></i>
-                <span>CDN dedicada para tráfego intenso</span>
-              </li>
-              <li class="flex items-center gap-2">
-                <i data-lucide="check" class="w-3.5 h-3.5 text-[#009EF7]"></i>
-                <span>Atendimento prioritário 24/7</span>
-              </li>
-            </ul>
-          </div>
-
-          <a 
-            href="#contato" 
-            class="mt-6 block text-center py-2.5 rounded text-xs font-semibold text-slate-200 bg-[#151821] hover:bg-[#1B202C] border border-[#1E222D] transition-colors"
-          >
-            Falar com Atendimento
-          </a>
-        </div>
-
-      </div>
-
-    </section>
-
-    <!-- ==========================================
-         SEÇÃO: FAQ (DÚVIDAS FREQUENTES)
-         ========================================== -->
-    <section id="faq" class="max-w-3xl mx-auto px-4 sm:px-6 py-14 border-t border-[#1E222D]">
+    <section id="faq" class="max-w-3xl mx-auto px-4 sm:px-6 py-14 border-t border-[#1C222F]">
       
       <div class="mb-8">
         <h2 class="font-heading text-xl sm:text-2xl font-bold text-white">Dúvidas Frequentes</h2>
@@ -640,41 +742,41 @@
         
         <details class="clean-card rounded p-4 group cursor-pointer">
           <summary class="flex justify-between items-center text-xs font-semibold text-white list-none">
-            <span>Como funciona a personalização White Label com domínio próprio?</span>
+            <span>Os créditos do FAST IPTV têm prazo de validade para expirar?</span>
             <i data-lucide="chevron-down" class="w-3.5 h-3.5 text-slate-500 group-open:rotate-180 transition-transform"></i>
           </summary>
           <p class="mt-2 text-xs text-slate-400 leading-relaxed">
-            Você aponta o seu domínio (exemplo: painel.seusite.com) via CNAME para nossos servidores. O certificado de segurança SSL (HTTPS) é gerado automaticamente e o painel exibe exclusivamente o seu logotipo e o nome da sua marca.
+            Não! Seus créditos não vencem no painel. O crédito só é consumido quando você ativa ou renova a mensalidade de um cliente final (1 crédito = 30 dias de acesso).
           </p>
         </details>
 
         <details class="clean-card rounded p-4 group cursor-pointer">
           <summary class="flex justify-between items-center text-xs font-semibold text-white list-none">
-            <span>Posso testar o painel antes de contratar?</span>
+            <span>Quantos testes gratuitos posso gerar para clientes?</span>
             <i data-lucide="chevron-down" class="w-3.5 h-3.5 text-slate-500 group-open:rotate-180 transition-transform"></i>
           </summary>
           <p class="mt-2 text-xs text-slate-400 leading-relaxed">
-            Sim. Disponibilizamos um painel de testes oficial aberto em <a href="https://demo.sigmast.site" target="_blank" class="text-[#009EF7] hover:underline">demo.sigmast.site</a> onde você pode navegar livremente pelas telas e testar as funcionalidades.
+            A geração de testes rápidos no painel é ilimitada e não consome seus créditos. Você pode enviar quantos testes quiser para seus clientes pelo WhatsApp.
           </p>
         </details>
 
         <details class="clean-card rounded p-4 group cursor-pointer">
           <summary class="flex justify-between items-center text-xs font-semibold text-white list-none">
-            <span>Qual a diferença entre o tema Sigma Pro e o Xtream Clássico?</span>
+            <span>Como os clientes assistem? Precisa configurar DNS?</span>
             <i data-lucide="chevron-down" class="w-3.5 h-3.5 text-slate-500 group-open:rotate-180 transition-transform"></i>
           </summary>
           <p class="mt-2 text-xs text-slate-400 leading-relaxed">
-            O tema Sigma Pro traz uma interface contemporânea focada em métricas visuais e cartões rápidos. O Xtream Clássico mantém a disposição tradicional de pastas e status do servidor online. Ambos operam sobre a mesma base de dados.
+            É super simples: o cliente pode usar nosso APK oficial direto na TV Box, baixar o IBO Player, XCIPTV ou Smarters nas Smart TVs, ou acessar via WebPlayer no computador.
           </p>
         </details>
 
         <details class="clean-card rounded p-4 group cursor-pointer">
           <summary class="flex justify-between items-center text-xs font-semibold text-white list-none">
-            <span>Qual o prazo de ativação do painel?</span>
+            <span>Como faço para comprar créditos e começar agora?</span>
             <i data-lucide="chevron-down" class="w-3.5 h-3.5 text-slate-500 group-open:rotate-180 transition-transform"></i>
           </summary>
           <p class="mt-2 text-xs text-slate-400 leading-relaxed">
-            A liberação do acesso padrão ao painel ocorre em minutos logo após o atendimento no WhatsApp. Configurações White Label completas com domínio próprio são ativadas em poucas horas.
+            Basta escolher um dos pacotes na tabela acima e clicar em "Comprar Pacote". Você falará diretamente com nosso atendimento no WhatsApp para envio do PIX e liberação imediata do seu usuário e senha.
           </p>
         </details>
 
@@ -683,37 +785,37 @@
     </section>
 
     <!-- ==========================================
-         SEÇÃO DE CONTATO / CTA FINAL
+         CALL TO ACTION FINAL WHATSAPP
          ========================================== -->
-    <section id="contato" class="max-w-3xl mx-auto px-4 sm:px-6 py-16 border-t border-[#1E222D] text-center">
+    <section class="max-w-3xl mx-auto px-4 sm:px-6 py-16 border-t border-[#1C222F] text-center">
       
       <div class="clean-card rounded-lg p-8 sm:p-12">
         <h2 class="font-heading text-2xl sm:text-3xl font-bold text-white tracking-tight">
-          Pronto para começar?
+          Pronto para lucrar com o FAST IPTV?
         </h2>
         <p class="text-xs sm:text-sm text-slate-400 mt-2 max-w-md mx-auto">
-          Entre em contato diretamente pelo WhatsApp para tirar dúvidas e ativar o seu painel hoje mesmo.
+          Adquira seus créditos com valor a partir de R$ 2,00 e comece a operar hoje mesmo com suporte direto.
         </p>
 
         <div class="mt-6 flex flex-wrap items-center justify-center gap-3">
           <a 
-            href="https://wa.me/?text=Ol%C3%A1!%20Gostaria%20de%20saber%20mais%20sobre%20o%20painel%20IPTV%20Sigma%20Pro." 
+            href="https://wa.me/?text=Ol%C3%A1!%20Quero%20comprar%20cr%C3%A9ditos%20FAST%20IPTV%20e%20ativar%20meu%20painel." 
             target="_blank" 
             rel="noopener noreferrer"
             class="inline-flex items-center gap-2 px-6 py-3 rounded text-xs font-bold text-white bg-emerald-600 hover:bg-emerald-500 transition-colors"
           >
             <i data-lucide="message-circle" class="w-4 h-4 fill-current"></i>
-            <span>Conversar no WhatsApp</span>
+            <span>Chamar no WhatsApp Agora</span>
           </a>
 
           <a 
             href="https://demo.sigmast.site" 
             target="_blank" 
             rel="noopener noreferrer"
-            class="inline-flex items-center gap-2 px-5 py-3 rounded text-xs font-medium text-slate-300 hover:text-white bg-[#090A0E] border border-[#1E222D] hover:border-slate-600 transition-colors"
+            class="inline-flex items-center gap-2 px-5 py-3 rounded text-xs font-medium text-slate-300 hover:text-white bg-[#080A0E] border border-[#1C222F] hover:border-slate-600 transition-colors"
           >
             <i data-lucide="external-link" class="w-3.5 h-3.5 text-[#009EF7]"></i>
-            <span>Acessar Painel Demo</span>
+            <span>Ver Painel Demonstração</span>
           </a>
         </div>
       </div>
@@ -723,34 +825,34 @@
   </main>
 
   <!-- ==========================================
-       FOOTER LIMPO
+       FOOTER LIMPO FAST IPTV
        ========================================== -->
-  <footer class="border-t border-[#1E222D] bg-[#07080B] py-8 text-xs text-slate-500">
+  <footer class="border-t border-[#1C222F] bg-[#06070A] py-8 text-xs text-slate-500">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
       <div class="flex items-center gap-2 text-slate-400 font-medium">
-        <span class="text-white font-bold">Sigma Pro</span>
-        <span>— Plataforma de Gestão IPTV</span>
+        <span class="text-white font-bold">FAST IPTV</span>
+        <span>— Servidor & Painel para Revenda</span>
       </div>
 
       <div class="flex items-center gap-5 text-slate-400">
-        <a href="#telas" class="hover:text-white transition-colors">Telas</a>
-        <a href="#recursos" class="hover:text-white transition-colors">Recursos</a>
-        <a href="https://demo.sigmast.site" target="_blank" class="hover:text-white transition-colors">Demo ao Vivo</a>
-        <a href="#contato" class="hover:text-white transition-colors">Contato</a>
+        <a href="#precos" class="hover:text-white transition-colors">Tabela de Créditos</a>
+        <a href="#apps" class="hover:text-white transition-colors">Apps Parceiros</a>
+        <a href="#painel" class="hover:text-white transition-colors">Painel</a>
+        <a href="https://demo.sigmast.site" target="_blank" class="hover:text-white transition-colors">Demo</a>
       </div>
 
-      <p>© 2026 Todos os direitos reservados.</p>
+      <p>© 2026 FAST IPTV. Todos os direitos reservados.</p>
     </div>
   </footer>
 
   <!-- ==========================================
-       SCRIPTS INTERATIVOS
+       SCRIPTS
        ========================================== -->
   <script>
     lucide.createIcons();
 
     // Alternar imagens de demonstração
-    function selectTheme(theme) {
+    function switchTheme(theme) {
       const btnSigma = document.getElementById('tab-btn-sigma');
       const btnXtream = document.getElementById('tab-btn-xtream');
       const imgSigma = document.getElementById('screen-sigma');
@@ -765,7 +867,7 @@
         imgSigma.classList.remove('hidden');
         imgXtream.classList.add('hidden');
 
-        desc.innerHTML = '<strong>Sigma Pro:</strong> Painel moderno com indicadores de clientes, testes ativos, conexões simultâneas e atalhos rápidos.';
+        desc.innerHTML = '<strong>Sigma Pro:</strong> Painel moderno com cartões de telemetria (Clientes, Testes Ativos, Expirados, Conexões ao Vivo e Revendas).';
         url.innerText = 'demo.sigmast.site/#/dashboard';
       } else {
         btnXtream.className = 'px-4 py-1.5 rounded text-xs font-semibold bg-[#009EF7] text-white transition-all';
@@ -774,32 +876,36 @@
         imgXtream.classList.remove('hidden');
         imgSigma.classList.add('hidden');
 
-        desc.innerHTML = '<strong>Xtream Clássico:</strong> Layout tradicional com status de servidor online, visual consagrado e navegação ágil.';
+        desc.innerHTML = '<strong>Xtream Clássico:</strong> Layout consagrado com status do Servidor Principal Online e pastas retráteis.';
         url.innerText = 'demo.sigmast.site/#/dashboard?theme=xtream';
       }
 
       lucide.createIcons();
     }
 
-    // Calculadora minimalista
-    function refreshCalc() {
-      const clients = parseInt(document.getElementById('calc-slider-clients').value);
-      const price = parseFloat(document.getElementById('calc-slider-price').value);
+    // Simulador de Lucratividade com base nos créditos a R$ 2,00
+    function updateProfitSim() {
+      const clients = parseInt(document.getElementById('sim-clients-slider').value);
+      const price = parseFloat(document.getElementById('sim-price-slider').value);
 
-      document.getElementById('calc-clients-num').innerText = `${clients} clientes`;
-      document.getElementById('calc-price-num').innerText = `R$ ${price.toFixed(2).replace('.', ',')}`;
+      document.getElementById('sim-clients-txt').innerText = `${clients} clientes`;
+      document.getElementById('sim-price-txt').innerText = `R$ ${price.toFixed(2).replace('.', ',')}`;
 
+      // Faturamento Bruto
       const gross = clients * price;
-      const costPerCredit = clients > 300 ? 7.0 : 8.0;
-      const totalCost = clients * costPerCredit;
-      const net = Math.max(0, gross - totalCost);
+      // Custo em créditos (considerando custo no pacote de 300 = R$ 2,00)
+      const cost = clients * 2.0;
+      // Lucro Líquido
+      const net = gross - cost;
+      const margin = ((net / gross) * 100).toFixed(0);
 
-      document.getElementById('calc-res-gross').innerText = `R$ ${gross.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}`;
-      document.getElementById('calc-res-cost').innerText = `R$ ${totalCost.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}`;
-      document.getElementById('calc-res-net').innerHTML = `R$ ${net.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}<span class="text-xs font-normal text-slate-400">/mês</span>`;
+      document.getElementById('sim-gross-val').innerText = `R$ ${gross.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}`;
+      document.getElementById('sim-cost-val').innerText = `R$ ${cost.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}`;
+      document.getElementById('sim-net-val').innerHTML = `R$ ${net.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}<span class="text-xs font-normal text-slate-400">/mês</span>`;
+      document.getElementById('sim-margin-val').innerHTML = `Margem de Lucro: <strong class="text-white">+${margin}%</strong>`;
     }
 
-    refreshCalc();
+    updateProfitSim();
   </script>
 
 </body>
